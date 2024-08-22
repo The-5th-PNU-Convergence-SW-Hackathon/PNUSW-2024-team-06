@@ -36,6 +36,26 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
+  # 현지화
+  intl: ^0.19.0
+  flutter_localizations: # intl 0.18.1 을 의존하고 있음
+    sdk: flutter
+
+  # Utility
+  phosphor_flutter: ^2.0.1 # icon
+  hidable: ^1.0.6 # scroll animation hider
+  badges: ^3.1.2
+  fluttertoast: ^8.2.2
+  loading_animation_widget: ^1.2.1
+  animated_toggle_switch: ^0.8.2
+
+  # Statement Manager
+  go_router: ^7.0.1
+  flutter_riverpod: ^2.0.2
+  uuid: ^4.2.2
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
