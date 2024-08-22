@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_forest_frontend/common/const/data.dart';
+import 'package:my_forest_frontend/common/const/image_path.dart';
 
 import '../model/guide_model.dart';
 
@@ -25,6 +26,7 @@ class GuideStateNotifier extends StateNotifier<List<GuideModel>> {
         .mapIndexed(
           (index, element) => GuideModel(
             id: index.toString(),
+            imageUrl: '${ImagePath.guideDirectory}0.png',
             title: element,
             engTitle: guideTitles[element]!,
             description: guideDescriptions[index],

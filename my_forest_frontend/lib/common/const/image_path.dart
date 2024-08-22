@@ -31,6 +31,6 @@ class ImagePath {
   static const forestAdult = "asset/img/forest/adult.png";
   static const forestDelivery = "asset/img/forest/delivery.png";
 
-
-
+  // guide
+  static const guideDirectory = "asset/img/guide/";
 }
