@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_forest_frontend/common/component/show/show_custom_general_dialog.dart';
 import 'package:my_forest_frontend/guide/component/guide_card.dart';
 import 'package:my_forest_frontend/guide/model/guide_model.dart';
+
+import 'guide_detail_card.dart';
 
 class VerticalItemGrid extends ConsumerWidget {
   final List<GuideModel> guides;
@@ -32,24 +35,16 @@ class VerticalItemGrid extends ConsumerWidget {
       ),
       itemCount: guides.length,
       itemBuilder: (context, index) {
-        final product = guides[index];
+        final guide = guides[index];
 
         return GestureDetector(
           onTap: () {
-            // print(isSale);
-            // if (isSale) {
-            //   context.pushNamed(
-            //     ProductDetailScreen.routeName,
-            //     pathParameters: {'id': product.id.toString()},
-            //   );
-            // } else {
-            //   context.pushNamed(
-            //     ProductPurchaseDetailScreen.routeName,
-            //     pathParameters: {'id': product.id.toString()},
-            //   );
-            // }
+            showCustomGeneralDialog(
+              context: context,
+              bottomSheetWidget: GuideDetailCard.fromModel(model: guide),
+            );
           },
-          child: GuideCard.fromModel(model: product),
+          child: GuideCard.fromModel(model: guide),
         );
       },
     );
