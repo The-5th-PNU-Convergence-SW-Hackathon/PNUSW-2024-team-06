@@ -4,6 +4,7 @@ import 'package:my_forest_frontend/daliy/view/daily_screen.dart';
 import 'package:my_forest_frontend/guide/view/guide_screen.dart';
 import 'package:my_forest_frontend/store/view/store_screen.dart';
 
+import '../../home/view/grow_stage_screen.dart';
 import '../../home/view/home_screen.dart';
 import '../../notification/view/notification_detail_screen.dart';
 import '../../notification/view/notification_screen.dart';
@@ -49,6 +50,14 @@ List<RouteBase> get routes => [
                 path: "/home",
                 name: HomeScreen.routeName,
                 builder: (context, state) => HomeScreen(),
+                routes: [
+                  GoRoute(
+                    parentNavigatorKey: _rootNavigatorKey,
+                    path: "grow_stage",
+                    name: GrowStageScreen.routeName,
+                    builder: (context, state) => GrowStageScreen(),
+                  ),
+                ],
               ),
             ],
           ),
