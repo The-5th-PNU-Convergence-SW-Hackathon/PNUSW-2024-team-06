@@ -24,24 +24,6 @@ class UserStateNotifier extends StateNotifier<UserModelBase> {
     );
   }
 
-  void updateRecentlyViewedItems({
-    required String recentlyViewedItem,
-  }) {
-    final user = state as UserModel;
-    if (user.recentlyViewedItems.contains(recentlyViewedItem)) {
-      state = user.copyWith(recentlyViewedItems: [
-        ...user.recentlyViewedItems
-            .where((element) => element != recentlyViewedItem),
-        recentlyViewedItem,
-      ]);
-    } else {
-      state = user.copyWith(recentlyViewedItems: [
-        ...user.recentlyViewedItems,
-        recentlyViewedItem,
-      ]);
-    }
-  }
-
   void initItems() {
     state = defaultUserModel;
   }
