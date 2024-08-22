@@ -17,4 +17,8 @@ class ImagePath {
 
   // user
   static const user = "asset/img/user/user.png";
+
+  // home
+  static const homeBackground = "asset/img/home/background.png";
+  static const homeSun = "asset/img/home/sun.png";
 }

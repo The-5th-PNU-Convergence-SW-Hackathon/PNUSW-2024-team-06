@@ -48,6 +48,7 @@ dependencies:
   fluttertoast: ^8.2.2
   loading_animation_widget: ^1.2.1
   animated_toggle_switch: ^0.8.2
+  percent_indicator: ^4.0.1
 
   # Statement Manager
   go_router: ^7.0.1
@@ -91,6 +92,7 @@ flutter:
     - asset/img/social_login/screen/
     - asset/img/banner/
     - asset/img/payment/
+    - asset/img/home/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
