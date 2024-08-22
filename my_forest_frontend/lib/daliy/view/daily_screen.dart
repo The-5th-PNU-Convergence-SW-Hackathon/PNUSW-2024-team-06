@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_forest_frontend/common/const/colors.dart';
 import 'package:my_forest_frontend/common/const/text_styles.dart';
+import 'package:my_forest_frontend/daliy/provider/daily_provider.dart';
+import 'package:my_forest_frontend/daliy/view/daily_writing_screen.dart';
 
 import '../../common/const/data.dart';
 import '../../common/layout/default_app_bar.dart';
@@ -14,6 +17,8 @@ class DailyScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final dailies = ref.watch(dailyProvider);
+
     return DefaultLayout(
       appbar: const DefaultAppBar(title: '일일문답'),
       child: ListView.separated(
@@ -21,18 +26,26 @@ class DailyScreen extends ConsumerWidget {
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
         reverse: true,
         itemBuilder: (BuildContext context, int index) {
-          final question = dailyQuestions[index];
+          final daily = dailies[index];
 
-          return Container(
-            decoration: BoxDecoration(
-              color: MyColor.third,
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                "$index. $question",
-                style: MyTextStyle.bodyMedium,
+          return InkWell(
+            onTap: () {
+              context.pushNamed(
+                DailyWritingScreen.routeName,
+                pathParameters: {'id': daily.id.toString()},
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: MyColor.third,
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  "$index. ${daily.question}",
+                  style: MyTextStyle.bodyMedium,
+                ),
               ),
             ),
           );
