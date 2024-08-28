@@ -6,10 +6,10 @@ import '../../common/utils/data_utils.dart';
 import '../model/notification_model.dart';
 
 final notificationDetailProvider =
-    Provider.family<NotificationModel?, String>((ref, id) {
+    Provider.family<NotificationModel, String>((ref, id) {
   final events = ref.watch(notificationProvider);
 
-  return events.where((element) => element.id == id).firstOrNull;
+  return events.firstWhere((element) => element.id == id);
 });
 
 final notificationProvider =

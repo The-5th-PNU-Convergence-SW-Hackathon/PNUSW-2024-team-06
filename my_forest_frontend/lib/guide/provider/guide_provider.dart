@@ -5,10 +5,10 @@ import 'package:my_forest_frontend/common/const/image_path.dart';
 
 import '../model/guide_model.dart';
 
-final guideDetailProvider = Provider.family<GuideModel?, String>((ref, id) {
+final guideDetailProvider = Provider.family<GuideModel, String>((ref, id) {
   final events = ref.watch(guideProvider);
 
-  return events.where((element) => element.id == id).firstOrNull;
+  return events.firstWhere((element) => element.id == id);
 });
 
 final guideProvider =
