@@ -23,6 +23,8 @@ class ImagePath {
   static const sun = "asset/img/home/sun.png";
   static const water = "asset/img/home/water.png";
   static const heart = "asset/img/home/heart.png";
+  static const animationHeart = "asset/img/home/animation_heart.png";
+  static const animationWater = "asset/img/home/animation_water.png";
 
   // forest
   static const forestDirectory = "asset/img/forest/";

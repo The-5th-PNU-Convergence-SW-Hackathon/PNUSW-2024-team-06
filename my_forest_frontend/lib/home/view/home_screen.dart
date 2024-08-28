@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_forest_frontend/common/const/colors.dart';
 import 'package:my_forest_frontend/common/const/text_styles.dart';
+import 'package:my_forest_frontend/home/provider/water_heart_provider.dart';
 import 'package:my_forest_frontend/home/view/grow_stage_screen.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -12,13 +13,26 @@ import '../../common/layout/default_app_bar.dart';
 import '../../common/layout/default_layout.dart';
 import '../../notification/view/notification_screen.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   static String get routeName => "home";
 
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  bool isWater = false;
+  bool isHeart = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final waterQuantity = ref.watch(waterQuantityProvider);
+    final waterCount = ref.watch(waterCountProvider);
+    final heartQuantity = ref.watch(heartQuantityProvider);
+    final heartCount = ref.watch(heartCountProvider);
+
     return DefaultLayout(
       appbar: DefaultAppBar(
         title: '',
@@ -71,6 +85,28 @@ class HomeScreen extends ConsumerWidget {
                     ),
                   ),
                 ),
+                if (isWater)
+                  Positioned(
+                    bottom: 220.0,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        ImagePath.animationWater,
+                        width: 80.0,
+                      ),
+                    ),
+                  ),
+                if (isHeart)
+                  Positioned(
+                    bottom: 220.0,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        ImagePath.animationHeart,
+                        width: 80.0,
+                      ),
+                    ),
+                  ),
                 Positioned(
                   bottom: 20.0,
                   child: InkWell(
@@ -157,13 +193,37 @@ class HomeScreen extends ConsumerWidget {
                   Row(
                     children: [
                       Expanded(
-                        child: _renderItemContainer(
-                            title: 'asdfasdf', iconUrl: 'qwerqwer'),
+                        child: InkWell(
+                          onTap: () async {
+                            isWater = true;
+                            setState(() {});
+                            await Future.delayed(const Duration(seconds: 5));
+                            isWater = false;
+                            setState(() {});
+                          },
+                          child: _renderItemContainer(
+                            title: "물 주기",
+                            quantity: waterQuantity,
+                            count: waterCount,
+                          ),
+                        ),
                       ),
                       const SizedBox(width: 8.0),
                       Expanded(
-                        child: _renderItemContainer(
-                            title: 'asdfasdf', iconUrl: 'qwerqwer'),
+                        child: InkWell(
+                          onTap: () async {
+                            isHeart = true;
+                            setState(() {});
+                            await Future.delayed(const Duration(seconds: 5));
+                            isHeart = false;
+                            setState(() {});
+                          },
+                          child: _renderItemContainer(
+                            title: '영양분 주기',
+                            quantity: heartQuantity,
+                            count: heartCount,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -205,7 +265,8 @@ class HomeScreen extends ConsumerWidget {
 
   Widget _renderItemContainer({
     required String title,
-    required String iconUrl,
+    required int quantity,
+    required int count,
   }) {
     return Container(
       decoration: BoxDecoration(
@@ -220,13 +281,13 @@ class HomeScreen extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text(
-              '물 주기',
+            Text(
+              title,
               style: MyTextStyle.bodyMedium,
             ),
             const SizedBox(height: 8.0),
             Image.asset(
-              ImagePath.water,
+              title == "물 주기" ? ImagePath.water : ImagePath.heart,
               height: 50.0,
             ),
             const SizedBox(height: 8.0),
@@ -235,13 +296,13 @@ class HomeScreen extends ConsumerWidget {
               children: [
                 // const SizedBox(width: 12.0),
                 Text(
-                  '내 물방울',
+                  title == "물 주기" ? '내 물방울' : "내 영양분",
                   style: MyTextStyle.descriptionRegular.copyWith(
                     color: MyColor.darkGrey,
                   ),
                 ),
                 Text(
-                  '1개',
+                  "$quantity 번",
                   style: MyTextStyle.descriptionRegular.copyWith(
                     color: MyColor.darkGrey,
                   ),
@@ -253,13 +314,13 @@ class HomeScreen extends ConsumerWidget {
               children: [
                 // const SizedBox(width: 12.0),
                 Text(
-                  '오늘 물 주기',
+                  "오늘 준 횟수",
                   style: MyTextStyle.descriptionRegular.copyWith(
                     color: MyColor.darkGrey,
                   ),
                 ),
                 Text(
-                  '100번',
+                  "$count 번",
                   style: MyTextStyle.descriptionRegular.copyWith(
                     color: MyColor.darkGrey,
                   ),
