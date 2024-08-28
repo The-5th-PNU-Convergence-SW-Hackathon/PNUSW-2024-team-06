@@ -10,4 +10,18 @@ class DailyModel {
     required this.answer,
     required this.emotionImageUrl,
   });
+
+  DailyModel copyWith({
+    String? id,
+    String? question,
+    String? answer,
+    String? emotionImageUrl,
+  }) {
+    return DailyModel(
+      id: id ?? this.id,
+      question: question ?? this.question,
+      answer: answer ?? this.answer,
+      emotionImageUrl: emotionImageUrl ?? this.emotionImageUrl,
+    );
+  }
 }

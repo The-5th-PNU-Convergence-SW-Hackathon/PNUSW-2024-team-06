@@ -29,4 +29,7 @@ class ImagePath {
 
   // guide
   static const guideDirectory = "asset/img/guide/";
+
+  // emotion
+  static const emotionDirectory = "asset/img/emotion/";
 }

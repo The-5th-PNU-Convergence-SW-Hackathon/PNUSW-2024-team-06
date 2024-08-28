@@ -25,14 +25,17 @@ void showCustomGeneralDialog({
       return Align(
         alignment: Alignment.center,
         child: Material(
-          borderRadius: BorderRadius.circular(20.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20.0),
-            child: InkWell(
-              onTap: () {
-                context.pop();
-              },
-              child: bottomSheetWidget,
+          color: MyColor.empty,
+          child: InkWell(
+            onTap: () {
+              context.pop();
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: bottomSheetWidget,
+              ),
             ),
           ),
         ),

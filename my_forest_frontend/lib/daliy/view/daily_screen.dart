@@ -18,6 +18,10 @@ class DailyScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final dailies = ref.watch(dailyProvider);
+    dailies.forEach((element) {
+      print(element.id);
+      print(element.answer);
+    });
 
     return DefaultLayout(
       appbar: const DefaultAppBar(title: '일일문답'),
@@ -37,7 +41,12 @@ class DailyScreen extends ConsumerWidget {
             },
             child: Container(
               decoration: BoxDecoration(
-                color: MyColor.third,
+                color: daily.answer.isEmpty ? MyColor.empty: MyColor.third,
+                border: Border.all(
+                  width: 2.0,
+                  color:
+                      daily.answer.isEmpty ? MyColor.primary : MyColor.empty,
+                ),
                 borderRadius: BorderRadius.circular(12.0),
               ),
               child: Padding(

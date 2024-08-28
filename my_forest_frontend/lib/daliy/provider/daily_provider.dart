@@ -20,6 +20,24 @@ class DailyStateNotifier extends StateNotifier<List<DailyModel>> {
     initItems();
   }
 
+  void updateItem({
+    required String id,
+    required String answer,
+    required String emotionImageUrl,
+  }) {
+    state = state.map((element) {
+      if (element.id == id) {
+        return element.copyWith(
+          id: id,
+          answer: answer,
+          emotionImageUrl: emotionImageUrl,
+        );
+      } else {
+        return element;
+      }
+    }).toList();
+  }
+
   void initItems() {
     state = dailyQuestions
         .mapIndexed(
