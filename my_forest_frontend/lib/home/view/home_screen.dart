@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_forest_frontend/common/component/default_button.dart';
+import 'package:my_forest_frontend/common/component/show/show_custom_general_dialog.dart';
 import 'package:my_forest_frontend/common/const/colors.dart';
 import 'package:my_forest_frontend/common/const/text_styles.dart';
 import 'package:my_forest_frontend/home/provider/water_heart_provider.dart';
 import 'package:my_forest_frontend/home/view/grow_stage_screen.dart';
+import 'package:my_forest_frontend/store/view/store_screen.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -195,11 +198,87 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       Expanded(
                         child: InkWell(
                           onTap: () async {
+                            if (waterQuantity < 1) {
+                              showCustomGeneralDialog(
+                                context: context,
+                                bottomSheetWidget: Container(
+                                  height: 180.0,
+                                  color: MyColor.white,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 40.0, horizontal: 20.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
+                                      children: [
+                                        const Text(
+                                          '물방울 갯수가 소진 되었습니다.',
+                                          style: MyTextStyle.bodyTitleBold,
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        const SizedBox(height: 20.0),
+                                        SecondaryButton(
+                                          onPressed: () {
+                                            context.pop();
+                                            context
+                                                .goNamed(StoreScreen.routeName);
+                                          },
+                                          child: const Text('스토어로 이동'),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                              return;
+                            }
+
                             isWater = true;
                             setState(() {});
                             await Future.delayed(const Duration(seconds: 5));
                             isWater = false;
                             setState(() {});
+
+                            showCustomGeneralDialog(
+                              context: context,
+                              bottomSheetWidget: Container(
+                                height: 248.0,
+                                color: MyColor.white,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 40.0, horizontal: 20.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: [
+                                      const Text(
+                                        '물 주기 성공!',
+                                        style: MyTextStyle.bigTitleBold,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      const SizedBox(height: 20.0),
+                                      Expanded(
+                                        child: Text(
+                                          '하루에 한 번 물을 줄 수 있어요.\n매일 물을 주면 0.5%씩 성장시킬 수 있어요.',
+                                          style: MyTextStyle.descriptionRegular
+                                              .copyWith(
+                                            color: MyColor.darkGrey,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 20.0),
+                                      SecondaryButton(
+                                        onPressed: () {
+                                          context.pop();
+                                        },
+                                        child: const Text('확인'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
                           },
                           child: _renderItemContainer(
                             title: "물 주기",
@@ -212,11 +291,87 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       Expanded(
                         child: InkWell(
                           onTap: () async {
+                            if (heartQuantity < 1) {
+                              showCustomGeneralDialog(
+                                context: context,
+                                bottomSheetWidget: Container(
+                                  height: 180.0,
+                                  color: MyColor.white,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 40.0, horizontal: 20.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
+                                      children: [
+                                        const Text(
+                                          '영양분 갯수가 소진 되었습니다.',
+                                          style: MyTextStyle.bodyTitleBold,
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        const SizedBox(height: 20.0),
+                                        SecondaryButton(
+                                          onPressed: () {
+                                            context.pop();
+                                            context
+                                                .goNamed(StoreScreen.routeName);
+                                          },
+                                          child: const Text('스토어로 이동'),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                              return;
+                            }
+
                             isHeart = true;
                             setState(() {});
                             await Future.delayed(const Duration(seconds: 5));
                             isHeart = false;
                             setState(() {});
+
+                            showCustomGeneralDialog(
+                              context: context,
+                              bottomSheetWidget: Container(
+                                height: 248.0,
+                                color: MyColor.white,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 40.0, horizontal: 20.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: [
+                                      const Text(
+                                        '영양분 주기 성공!',
+                                        style: MyTextStyle.bigTitleBold,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      const SizedBox(height: 20.0),
+                                      Expanded(
+                                        child: Text(
+                                          '하루에 한 번 영양분을 줄 수 있어요.\n매일 영양분을 주면 1%씩 성장시킬 수 있어요.',
+                                          style: MyTextStyle.descriptionRegular
+                                              .copyWith(
+                                            color: MyColor.darkGrey,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 20.0),
+                                      SecondaryButton(
+                                        onPressed: () {
+                                          context.pop();
+                                        },
+                                        child: const Text('확인'),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
                           },
                           child: _renderItemContainer(
                             title: '영양분 주기',
