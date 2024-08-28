@@ -25,11 +25,7 @@ class ImagePath {
   static const heart = "asset/img/home/heart.png";
 
   // forest
-  static const forestSeed = "asset/img/forest/seed.png";
-  static const forestSprout = "asset/img/forest/sprout.png";
-  static const forestLeaf = "asset/img/forest/leaf.png";
-  static const forestAdult = "asset/img/forest/adult.png";
-  static const forestDelivery = "asset/img/forest/delivery.png";
+  static const forestDirectory = "asset/img/forest/";
 
   // guide
   static const guideDirectory = "asset/img/guide/";
