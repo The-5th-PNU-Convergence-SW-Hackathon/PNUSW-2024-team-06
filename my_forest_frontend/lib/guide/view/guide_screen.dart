@@ -7,7 +7,7 @@ import '../../common/const/text_styles.dart';
 import '../../common/layout/default_app_bar.dart';
 import '../../common/layout/default_layout.dart';
 import '../component/guide_horizontal_item_list.dart';
-import '../component/vertical_item_grid.dart';
+import '../component/guide_vertical_item_grid.dart';
 import '../provider/guide_provider.dart';
 
 class GuideScreen extends ConsumerWidget {
@@ -70,7 +70,7 @@ class GuideScreen extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 20.0),
-            VerticalItemGrid(guides: guides),
+            GuideVerticalItemGrid(guides: guides),
             const SizedBox(height: 40.0),
           ],
         ),

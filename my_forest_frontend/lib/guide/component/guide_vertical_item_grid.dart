@@ -6,10 +6,10 @@ import 'package:my_forest_frontend/guide/model/guide_model.dart';
 
 import 'guide_detail_card.dart';
 
-class VerticalItemGrid extends ConsumerWidget {
+class GuideVerticalItemGrid extends ConsumerWidget {
   final List<GuideModel> guides;
 
-  const VerticalItemGrid({
+  const GuideVerticalItemGrid({
     super.key,
     required this.guides,
   });
