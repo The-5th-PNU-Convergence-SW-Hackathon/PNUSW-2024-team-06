@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_forest_frontend/common/component/default_button.dart';
+import 'package:my_forest_frontend/common/component/show/custom_general_dialog_bottom_sheet_widget.dart';
 import 'package:my_forest_frontend/common/component/show/show_custom_general_dialog.dart';
 import 'package:my_forest_frontend/common/const/colors.dart';
 import 'package:my_forest_frontend/common/const/text_styles.dart';
@@ -201,33 +201,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             if (waterQuantity < 1) {
                               showCustomGeneralDialog(
                                 context: context,
-                                bottomSheetWidget: Container(
-                                  height: 180.0,
-                                  color: MyColor.white,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 40.0, horizontal: 20.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: [
-                                        const Text(
-                                          '물방울 갯수가 소진 되었습니다.',
-                                          style: MyTextStyle.bodyTitleBold,
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        const SizedBox(height: 20.0),
-                                        SecondaryButton(
-                                          onPressed: () {
-                                            context.pop();
-                                            context.goNamed(
-                                                ProductScreen.routeName);
-                                          },
-                                          child: const Text('스토어로 이동'),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                bottomSheetWidget:
+                                    CustomGeneralDialogBottomSheetWidget(
+                                  title: '물방울 갯수가 소진 되었습니다.',
+                                  onPressed: () {
+                                    context.pop();
+                                    context.goNamed(ProductScreen.routeName);
+                                  },
+                                  buttonText: '스토어로 이동',
                                 ),
                               );
                               return;
@@ -241,42 +222,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                             showCustomGeneralDialog(
                               context: context,
-                              bottomSheetWidget: Container(
-                                height: 248.0,
-                                color: MyColor.white,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 40.0, horizontal: 20.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: [
-                                      const Text(
-                                        '물 주기 성공!',
-                                        style: MyTextStyle.bigTitleBold,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      const SizedBox(height: 20.0),
-                                      Expanded(
-                                        child: Text(
-                                          '하루에 한 번 물을 줄 수 있어요.\n매일 물을 주면 0.5%씩 성장시킬 수 있어요.',
-                                          style: MyTextStyle.descriptionRegular
-                                              .copyWith(
-                                            color: MyColor.darkGrey,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 20.0),
-                                      SecondaryButton(
-                                        onPressed: () {
-                                          context.pop();
-                                        },
-                                        child: const Text('확인'),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                              bottomSheetWidget:
+                                  CustomGeneralDialogBottomSheetWidget(
+                                title: '물 주기 성공!',
+                                description:
+                                    '하루에 한 번 물을 줄 수 있어요.\n매일 물을 주면 0.5%씩 성장시킬 수 있어요.',
+                                onPressed: () {
+                                  context.pop();
+                                },
+                                buttonText: '확인',
                               ),
                             );
                           },
@@ -294,33 +248,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             if (heartQuantity < 1) {
                               showCustomGeneralDialog(
                                 context: context,
-                                bottomSheetWidget: Container(
-                                  height: 180.0,
-                                  color: MyColor.white,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 40.0, horizontal: 20.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: [
-                                        const Text(
-                                          '영양분 갯수가 소진 되었습니다.',
-                                          style: MyTextStyle.bodyTitleBold,
-                                          textAlign: TextAlign.center,
-                                        ),
-                                        const SizedBox(height: 20.0),
-                                        SecondaryButton(
-                                          onPressed: () {
-                                            context.pop();
-                                            context.goNamed(
-                                                ProductScreen.routeName);
-                                          },
-                                          child: const Text('스토어로 이동'),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                bottomSheetWidget:
+                                    CustomGeneralDialogBottomSheetWidget(
+                                  title: '영양분 갯수가 소진 되었습니다.',
+                                  onPressed: () {
+                                    context.pop();
+                                    context.goNamed(ProductScreen.routeName);
+                                  },
+                                  buttonText: '스토어로 이동',
                                 ),
                               );
                               return;
@@ -334,42 +269,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                             showCustomGeneralDialog(
                               context: context,
-                              bottomSheetWidget: Container(
-                                height: 248.0,
-                                color: MyColor.white,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 40.0, horizontal: 20.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: [
-                                      const Text(
-                                        '영양분 주기 성공!',
-                                        style: MyTextStyle.bigTitleBold,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      const SizedBox(height: 20.0),
-                                      Expanded(
-                                        child: Text(
-                                          '하루에 한 번 영양분을 줄 수 있어요.\n매일 영양분을 주면 1%씩 성장시킬 수 있어요.',
-                                          style: MyTextStyle.descriptionRegular
-                                              .copyWith(
-                                            color: MyColor.darkGrey,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                      const SizedBox(height: 20.0),
-                                      SecondaryButton(
-                                        onPressed: () {
-                                          context.pop();
-                                        },
-                                        child: const Text('확인'),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                              bottomSheetWidget:
+                                  CustomGeneralDialogBottomSheetWidget(
+                                title: '영양분 주기 성공!',
+                                description:
+                                    '하루에 한 번 영양분을 줄 수 있어요.\n매일 영양분을 주면 1%씩 성장시킬 수 있어요.',
+                                onPressed: () {
+                                  context.pop();
+                                },
+                                buttonText: '확인',
                               ),
                             );
                           },
@@ -442,7 +350,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             const SizedBox(height: 8.0),
             Image.asset(
-              title == "물 주기" ? ImagePath.water : ImagePath.heart,
+              title == "물 주기"
+                  ? ImagePath.animationWater
+                  : ImagePath.animationHeart,
               height: 50.0,
             ),
             const SizedBox(height: 8.0),
@@ -457,7 +367,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                 ),
                 Text(
-                  "$quantity 번",
+                  "$quantity 개",
                   style: MyTextStyle.descriptionRegular.copyWith(
                     color: MyColor.darkGrey,
                   ),
