@@ -31,7 +31,8 @@ class ProductStateNotifier extends StateNotifier<List<ProductModel>> {
       (index) => ProductModel(
         id: index.toString(),
         title: products.keys.toList()[index],
-        price: products.values.toList()[index],
+        price: products.values.toList()[index].first,
+        quantity: products.values.toList()[index].last,
         mainImageUrl: ProductCategoryStatus.getImageUrl(index: index),
         createdAt: createdAt.subtract(Duration(
           days: DataUtils.getRandomDouble(min: 1.0, range: 10).toInt(),

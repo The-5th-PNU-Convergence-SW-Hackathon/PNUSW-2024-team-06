@@ -1,27 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_forest_frontend/common/const/colors.dart';
 import 'package:my_forest_frontend/store/component/store_horizontal_item_list.dart';
 
+import '../../common/component/show/custom_general_dialog_bottom_sheet_widget.dart';
+import '../../common/component/show/show_custom_general_dialog.dart';
 import '../../common/const/text_styles.dart';
 import '../../common/layout/default_app_bar.dart';
 import '../../common/layout/default_layout.dart';
+import '../../home/view/home_screen.dart';
 import '../provider/product_provider.dart';
 
-class ProductScreen extends ConsumerWidget {
+class ProductScreen extends ConsumerStatefulWidget {
   static String get routeName => "product";
 
   const ProductScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ProductScreen> createState() => _ProductScreenState();
+}
+
+class _ProductScreenState extends ConsumerState<ProductScreen> {
+  bool isLoading = false;
+
+  @override
+  Widget build(BuildContext context) {
     final products = ref.watch(productProvider);
     final waters = products.sublist(0, 4);
     final hearts = products.sublist(4, 8);
-    final pots = products.sublist(8, 16);
-    final backgrounds = products.sublist(16, 22);
 
     return DefaultLayout(
+      isLoading: isLoading,
       appbar: const DefaultAppBar(title: '스토어'),
       child: SingleChildScrollView(
         child: Column(
@@ -31,26 +41,63 @@ class ProductScreen extends ConsumerWidget {
               title: '물',
               description: '반려식물이 더 빨리 자라도록 많은 물을 주세요',
             ),
-            StoreHorizontalItemList(products: waters),
+            StoreHorizontalItemList(
+              products: waters,
+              onPurchasePress: () async {
+                context.pop();
+                setState(() {
+                  isLoading = true;
+                });
+                await Future.delayed(const Duration(seconds: 1));
+                setState(() {
+                  isLoading = false;
+                });
+
+                showCustomGeneralDialog(
+                  context: context,
+                  bottomSheetWidget: CustomGeneralDialogBottomSheetWidget(
+                    title: "구매완료",
+                    description: "반려 식물에게 물을 주러 가볼까요?",
+                    onPressed: () {
+                      context.pop();
+                      context.goNamed(HomeScreen.routeName);
+                    },
+                    buttonText: "물 주러 가기",
+                  ),
+                );
+              },
+            ),
             const SizedBox(height: 40.0),
             _renderTitleAndDescription(
               title: '영양분',
               description: '반려식물이 더 빨리 자라도록 많은 영양분을 주세요',
             ),
-            StoreHorizontalItemList(products: hearts),
-            const SizedBox(height: 40.0),
-            _renderTitleAndDescription(
-              title: '팟',
-              description: '내 반려식물과 어울리는 팟을 골라보세요.\n배송 시 최종 구매 팟 디자인으로 배송돼요.',
+            StoreHorizontalItemList(
+              products: hearts,
+              onPurchasePress: () async {
+                context.pop();
+                setState(() {
+                  isLoading = true;
+                });
+                await Future.delayed(const Duration(seconds: 1));
+                setState(() {
+                  isLoading = false;
+                });
+
+                showCustomGeneralDialog(
+                  context: context,
+                  bottomSheetWidget: CustomGeneralDialogBottomSheetWidget(
+                    title: "구매완료",
+                    description: "반려 식물에게 영양분을 주러 가볼까요?",
+                    onPressed: () {
+                      context.pop();
+                      context.goNamed(HomeScreen.routeName);
+                    },
+                    buttonText: "영양분 주러가기",
+                  ),
+                );
+              },
             ),
-            StoreHorizontalItemList(products: pots),
-            const SizedBox(height: 40.0),
-            _renderTitleAndDescription(
-              title: '백그라운드',
-              description: '나의 취향대로 반려식물의 백그라운드를 설정해보세요',
-            ),
-            StoreHorizontalItemList(products: backgrounds),
-            const SizedBox(height: 40.0),
           ],
         ),
       ),
