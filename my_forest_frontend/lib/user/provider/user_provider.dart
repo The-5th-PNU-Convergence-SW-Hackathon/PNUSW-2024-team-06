@@ -76,6 +76,12 @@ class UserStateNotifier extends StateNotifier<UserModelBase> {
     );
   }
 
+  void initForest() {
+    state = (state as UserModel).copyWith(
+      forest: null,
+    );
+  }
+
   void initItems() {
     state = defaultUserModel;
   }

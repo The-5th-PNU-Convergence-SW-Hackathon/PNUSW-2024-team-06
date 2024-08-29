@@ -66,6 +66,7 @@ class DeliveryStatusContainer extends ConsumerWidget {
                             ? SecondaryButton(
                                 onPressed: () {
                                   context.goNamed(DeliveryScreen.routeName);
+                                  ref.read(userProvider.notifier).initForest();
                                 },
                                 child: const Text('배송하기'),
                               )
