@@ -88,7 +88,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     alignment: Alignment.center,
                     child: Image.asset(
                       (forest is ForestModel)
-                          ? ForestStatus.getImageUrl(status: forest.status)
+                          ? ForestStatus.getImageUrl(
+                              status: ForestStatus.getStatus(
+                                  percentage: forest.percentage),
+                            )
                           : ImagePath.appIcon,
                       width: 80.0,
                     ),
@@ -157,17 +160,25 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                     backgroundColor: MyColor.middleGrey,
                                     radius: 40.0,
                                     lineWidth: 5.0,
-                                    percent: 0.26,
+                                    percent: (forest.percentage > 99)
+                                        ? 1.0
+                                        : forest.percentage / 100,
                                     center: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          "${forest.percentage} %",
+                                          (forest.percentage > 99)
+                                              ? "100 %"
+                                              : "${forest.percentage} %",
                                           style: MyTextStyle.bodyMedium,
                                         ),
                                         Text(
-                                          forest.status.label.split(' ').first,
+                                          ForestStatus.getStatus(
+                                                  percentage: forest.percentage)
+                                              .label
+                                              .split(' ')
+                                              .first,
                                           style: MyTextStyle.descriptionRegular
                                               .copyWith(
                                             color: MyColor.darkGrey,
@@ -259,7 +270,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                             isWater = true;
                             setState(() {});
-                            await Future.delayed(const Duration(seconds: 5));
+                            await Future.delayed(const Duration(seconds: 3));
                             isWater = false;
                             setState(() {});
 
@@ -269,8 +280,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   CustomGeneralDialogBottomSheetWidget(
                                 title: '물 주기 성공!',
                                 description:
-                                    '하루에 한 번 물을 줄 수 있어요.\n매일 물을 주면 0.5%씩 성장시킬 수 있어요.',
+                                    '하루에 한 번 물을 줄 수 있어요. 매일 물을 주면 1%씩 성장시킬 수 있어요.',
                                 onPressed: () {
+                                  ref.read(userProvider.notifier).water();
                                   context.pop();
                                 },
                                 buttonText: '확인',
@@ -306,7 +318,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                             isHeart = true;
                             setState(() {});
-                            await Future.delayed(const Duration(seconds: 5));
+                            // await Future.delayed(const Duration(seconds: 3));
                             isHeart = false;
                             setState(() {});
 
@@ -316,8 +328,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   CustomGeneralDialogBottomSheetWidget(
                                 title: '영양분 주기 성공!',
                                 description:
-                                    '하루에 한 번 영양분을 줄 수 있어요.\n매일 영양분을 주면 1%씩 성장시킬 수 있어요.',
+                                    '하루에 한 번 영양분을 줄 수 있어요. 매일 영양분을 주면 2%씩 성장시킬 수 있어요.',
                                 onPressed: () {
+                                  ref.read(userProvider.notifier).heart();
                                   context.pop();
                                 },
                                 buttonText: '확인',

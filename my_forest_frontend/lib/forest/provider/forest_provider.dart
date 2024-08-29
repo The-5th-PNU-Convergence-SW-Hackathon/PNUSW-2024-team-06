@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_forest_frontend/common/const/data.dart';
 import 'package:my_forest_frontend/common/const/image_path.dart';
-import 'package:my_forest_frontend/forest/model/enum/forest_status.dart';
 
 import '../model/forest_model.dart';
 
@@ -34,7 +33,6 @@ class ForestStateNotifier extends StateNotifier<List<ForestModel>> {
         description: forestData[forests.elementAt(index)]![0],
         effect: forestData[forests.elementAt(index)]![1],
         percentage: 0,
-        status: ForestStatus.seed,
       ),
     );
   }

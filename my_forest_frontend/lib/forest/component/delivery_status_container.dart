@@ -45,7 +45,11 @@ class DeliveryStatusContainer extends ConsumerWidget {
                   ? Row(
                       children: [
                         Image.asset(
-                          ForestStatus.getImageUrl(status: forest.status),
+                          ForestStatus.getImageUrl(
+                            status: ForestStatus.getStatus(
+                              percentage: forest.percentage,
+                            ),
+                          ),
                           width: 72.0,
                           height: 72.0,
                           fit: BoxFit.fill,
@@ -57,7 +61,8 @@ class DeliveryStatusContainer extends ConsumerWidget {
                           style: MyTextStyle.bodyRegular,
                         ),
                         const Expanded(child: SizedBox(width: 1.0)),
-                        forest.status == ForestStatus.delivery
+                        ForestStatus.getStatus(percentage: forest.percentage) ==
+                                ForestStatus.delivery
                             ? SecondaryButton(
                                 onPressed: () {
                                   context.goNamed(DeliveryScreen.routeName);

@@ -1,6 +1,3 @@
-
-import 'enum/forest_status.dart';
-
 abstract class ForestModelBase {}
 
 class ForestModelLoading extends ForestModelBase {}
@@ -21,7 +18,6 @@ class ForestModel extends ForestModelBase {
   final String description;
   final String effect;
   final int percentage;
-  final ForestStatus status;
 
   ForestModel({
     required this.id,
@@ -31,7 +27,6 @@ class ForestModel extends ForestModelBase {
     required this.description,
     required this.effect,
     required this.percentage,
-    required this.status,
   });
 
   ForestModel copyWith({
@@ -42,7 +37,6 @@ class ForestModel extends ForestModelBase {
     String? description,
     String? effect,
     int? percentage,
-    ForestStatus? status,
   }) {
     return ForestModel(
       id: id ?? this.id,
@@ -52,7 +46,6 @@ class ForestModel extends ForestModelBase {
       description: description ?? this.description,
       effect: effect ?? this.effect,
       percentage: percentage ?? this.percentage,
-      status: status ?? this.status,
     );
   }
 }

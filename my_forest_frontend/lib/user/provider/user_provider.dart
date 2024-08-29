@@ -38,21 +38,33 @@ class UserStateNotifier extends StateNotifier<UserModelBase> {
     );
   }
 
-  void updateWaterCount({required int waterCount}) {
-    state = (state as UserModel).copyWith(
-      waterCount: waterCount,
-    );
-  }
-
   void updateHeartQuantity({required int heartQuantity}) {
     state = (state as UserModel).copyWith(
       heartQuantity: heartQuantity,
     );
   }
 
-  void updateHeartCount({required int heartCount}) {
-    state = (state as UserModel).copyWith(
-      heartCount: heartCount,
+  void water() {
+    final user = state as UserModel;
+
+    state = user.copyWith(
+      waterCount: user.waterCount + 1,
+      waterQuantity: user.waterQuantity - 1,
+      forest: user.forest?.copyWith(
+        percentage: user.forest!.percentage + 1,
+      ),
+    );
+  }
+
+  void heart() {
+    final user = state as UserModel;
+
+    state = user.copyWith(
+      heartCount: user.heartCount + 1,
+      heartQuantity: user.heartQuantity - 1,
+      forest: user.forest?.copyWith(
+        percentage: user.forest!.percentage + 2,
+      ),
     );
   }
 

@@ -11,7 +11,6 @@ class ForestDetailCard extends StatelessWidget {
   final String nickname;
   final String title;
   final String description;
-  final ForestStatus status;
 
   const ForestDetailCard({
     super.key,
@@ -20,7 +19,6 @@ class ForestDetailCard extends StatelessWidget {
     required this.nickname,
     required this.title,
     required this.description,
-    required this.status,
   });
 
   factory ForestDetailCard.fromModel({
@@ -32,7 +30,6 @@ class ForestDetailCard extends StatelessWidget {
       nickname: model.nickname,
       title: model.title,
       description: model.description,
-      status: model.status,
     );
   }
 
