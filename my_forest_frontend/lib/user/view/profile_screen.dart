@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_forest_frontend/user/view/term_detail_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../common/component/divider_container.dart';
-import '../../common/component/show/show_cupertino_alert.dart';
 import '../../common/const/colors.dart';
 import '../../common/const/image_path.dart';
 import '../../common/const/text_styles.dart';
@@ -14,7 +14,6 @@ import '../../forest/component/delivery_status_container.dart';
 import '../model/user_model.dart';
 import '../provider/user_provider.dart';
 import 'edit_profile_screen.dart';
-import 'login_screen.dart';
 
 class ProfileScreen extends ConsumerWidget {
   static String get routeName => "profile";
@@ -57,33 +56,20 @@ class ProfileScreen extends ConsumerWidget {
             const DeliveryStatusContainer(),
             const SizedBox(height: 20.0),
             renderIconAndTextButton(
-              icon: PhosphorIcon(
-                PhosphorIcons.bagSimple(),
-                size: 28.0,
-              ),
-              title: '내 아이템',
+              title: '이용약관',
               onTap: () {
-                context.pushNamed(EditProfileScreen.routeName);
+                context.pushNamed(
+                  TermDetailScreen.routeName,
+                  pathParameters: {'id': '0'},
+                );
               },
             ),
             renderIconAndTextButton(
-              icon: PhosphorIcon(
-                PhosphorIcons.signOut(),
-                size: 28.0,
-              ),
-              title: '로그아웃',
+              title: '개인정보 처리방침',
               onTap: () {
-                showCustomCupertinoAlert(
-                  context: context,
-                  titleWidget: const Text('로그아웃 하시겠습니까?'),
-                  completeText: '확인',
-                  completeFunction: () {
-                    context.goNamed(LoginScreen.routeName);
-                  },
-                  cancelText: '취소',
-                  cancelFunction: () {
-                    context.pop();
-                  },
+                context.pushNamed(
+                  TermDetailScreen.routeName,
+                  pathParameters: {'id': '1'},
                 );
               },
             ),
@@ -132,7 +118,6 @@ class ProfileScreen extends ConsumerWidget {
   }
 
   Widget renderIconAndTextButton({
-    required Widget icon,
     required String title,
     required VoidCallback onTap,
   }) {
@@ -145,13 +130,16 @@ class ProfileScreen extends ConsumerWidget {
         ),
         child: IntrinsicHeight(
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              icon,
-              const SizedBox(width: 12.0),
               Text(
                 title,
                 style: MyTextStyle.bodyTitleMedium,
+              ),
+              PhosphorIcon(
+                PhosphorIcons.caretRight(),
+                size: 28,
               ),
             ],
           ),

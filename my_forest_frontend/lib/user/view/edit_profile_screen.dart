@@ -6,6 +6,7 @@ import 'package:my_forest_frontend/user/compoenet/showKakaoAddress.dart';
 
 import '../../common/component/custom_text_form_field.dart';
 import '../../common/component/default_button.dart';
+import '../../common/component/show/show_cupertino_alert.dart';
 import '../../common/component/show/show_custom_toast.dart';
 import '../../common/const/colors.dart';
 import '../../common/const/image_path.dart';
@@ -14,6 +15,7 @@ import '../../common/layout/default_app_bar.dart';
 import '../../common/layout/default_layout.dart';
 import '../model/user_model.dart';
 import '../provider/user_provider.dart';
+import 'login_screen.dart';
 
 class EditProfileScreen extends ConsumerStatefulWidget {
   static String get routeName => "edit_profile";
@@ -169,26 +171,50 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                     },
                     defaultValue: user.address.memo,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 40.0,
-                    ),
-                    child: PrimaryButton(
+                  const SizedBox(height: 8.0),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: TextButton(
                       onPressed: () {
-                        ref.read(userProvider.notifier).updateInfo(
-                              name: _nameController.text,
-                              phone: _phoneController.text,
-                              address: _addressController.text,
-                              detailAddress: _detailAddressController.text,
-                              memo: memo,
-                            );
-
-                        showCustomToast(context, msg: '저장이 완료되었습니다.');
-                        context.pop();
+                        showCustomCupertinoAlert(
+                          context: context,
+                          titleWidget: const Text('로그아웃 하시겠습니까?'),
+                          completeText: '확인',
+                          completeFunction: () {
+                            context.goNamed(LoginScreen.routeName);
+                          },
+                          cancelText: '취소',
+                          cancelFunction: () {
+                            context.pop();
+                          },
+                        );
                       },
-                      child: const Text('변경하기'),
+                      child: Text(
+                        '로그아웃',
+                        style: MyTextStyle.minimumRegular.copyWith(
+                          color: MyColor.darkGrey,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
                     ),
-                  )
+                  ),
+                  const SizedBox(height: 12.0),
+                  PrimaryButton(
+                    onPressed: () {
+                      ref.read(userProvider.notifier).updateInfo(
+                            name: _nameController.text,
+                            phone: _phoneController.text,
+                            address: _addressController.text,
+                            detailAddress: _detailAddressController.text,
+                            memo: memo,
+                          );
+
+                      showCustomToast(context, msg: '저장이 완료되었습니다.');
+                      context.pop();
+                    },
+                    child: const Text('변경하기'),
+                  ),
+                  const SizedBox(height: 40.0),
                 ],
               ),
             ),

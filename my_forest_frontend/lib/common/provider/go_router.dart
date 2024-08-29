@@ -96,40 +96,6 @@ List<RouteBase> get routes => [
                     },
                   )
                 ],
-                // routes: [
-                //   GoRoute(
-                //     parentNavigatorKey: _rootNavigatorKey,
-                //     path: "my_request_list",
-                //     name: MyRequestListScreen.routeName,
-                //     builder: (context, state) => MyRequestListScreen(),
-                //   ),
-                //   GoRoute(
-                //     parentNavigatorKey: _rootNavigatorKey,
-                //     path: "list",
-                //     name: ManufacturingListScreen.routeName,
-                //     builder: (context, state) => ManufacturingListScreen(),
-                //   ),
-                //   GoRoute(
-                //     parentNavigatorKey: _rootNavigatorKey,
-                //     path: ":id",
-                //     name: ManufacturingDetailScreen.routeName,
-                //     builder: (context, state) {
-                //       final String id = state.pathParameters["id"]!;
-                //       return ManufacturingDetailScreen(id: id);
-                //     },
-                //     routes: [
-                //       GoRoute(
-                //         parentNavigatorKey: _rootNavigatorKey,
-                //         path: "request",
-                //         name: ManufacturingRequestScreen.routeName,
-                //         builder: (context, state) {
-                //           final String id = state.pathParameters["id"]!;
-                //           return ManufacturingRequestScreen(id: id);
-                //         },
-                //       )
-                //     ],
-                //   ),
-                // ],
               ),
             ],
           ),
@@ -139,30 +105,6 @@ List<RouteBase> get routes => [
                 path: "/product",
                 name: ProductScreen.routeName,
                 builder: (context, state) => ProductScreen(),
-                //   routes: [
-                //     GoRoute(
-                //       parentNavigatorKey: _rootNavigatorKey,
-                //       path: 'purchase:id',
-                //       name: ProductPurchaseDetailScreen.routeName,
-                //       builder: (context, state) {
-                //         final productId =
-                //         GoRouterState.of(context).pathParameters['id']!;
-                //
-                //         return ProductPurchaseDetailScreen(id: productId);
-                //       },
-                //     ),
-                //     GoRoute(
-                //       parentNavigatorKey: _rootNavigatorKey,
-                //       path: ':id',
-                //       name: ProductDetailScreen.routeName,
-                //       builder: (context, state) {
-                //         final productId =
-                //             GoRouterState.of(context).pathParameters['id']!;
-                //
-                //         return ProductDetailScreen(id: productId);
-                //       },
-                //     ),
-                //   ],
               ),
             ],
           ),
@@ -246,6 +188,7 @@ List<RouteBase> get routes => [
                 builder: (context, state) => TermScreen(),
                 routes: [
                   GoRoute(
+                    parentNavigatorKey: _rootNavigatorKey,
                     path: 'detail/:id',
                     name: TermDetailScreen.routeName,
                     builder: (context, state) => TermDetailScreen(),
@@ -302,27 +245,4 @@ List<RouteBase> get routes => [
           ),
         ],
       ),
-      // GoRoute(
-      //   parentNavigatorKey: _rootNavigatorKey,
-      //   path: '/create_order',
-      //   name: CreateOrderScreen.routeName,
-      //   builder: (context, state) => CreateOrderScreen(),
-      // ),
-      // GoRoute(
-      //   parentNavigatorKey: _rootNavigatorKey,
-      //   path: '/order_list',
-      //   name: OrderListScreen.routeName,
-      //   builder: (context, state) => OrderListScreen(),
-      //   routes: [
-      //     GoRoute(
-      //       parentNavigatorKey: _rootNavigatorKey,
-      //       path: ':id',
-      //       name: OrderDetailScreen.routeName,
-      //       builder: (context, state) {
-      //         String id = state.pathParameters['id']!;
-      //         return OrderDetailScreen(id: id);
-      //       },
-      //     ),
-      //   ],
-      // ),
     ];
