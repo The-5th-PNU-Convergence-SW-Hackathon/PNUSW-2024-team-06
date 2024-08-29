@@ -27,6 +27,7 @@ class ImagePath {
   static const animationWater = "asset/img/home/animation_water.png";
 
   // forest
+  static const forestStageDirectory = "asset/img/forest/stage/";
   static const forestDirectory = "asset/img/forest/";
 
   // guide

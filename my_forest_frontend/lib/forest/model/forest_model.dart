@@ -19,6 +19,7 @@ class ForestModel extends ForestModelBase {
   final String nickname;
   final String title;
   final String description;
+  final String effect;
   final ForestStatus status;
 
   ForestModel({
@@ -27,6 +28,7 @@ class ForestModel extends ForestModelBase {
     required this.nickname,
     required this.title,
     required this.description,
+    required this.effect,
     required this.status,
   });
 
@@ -36,6 +38,7 @@ class ForestModel extends ForestModelBase {
     String? nickname,
     String? title,
     String? description,
+    String? effect,
     ForestStatus? status,
   }) {
     return ForestModel(
@@ -44,6 +47,7 @@ class ForestModel extends ForestModelBase {
       nickname: nickname ?? this.nickname,
       title: title ?? this.title,
       description: description ?? this.description,
+      effect: effect ?? this.effect,
       status: status ?? this.status,
     );
   }

@@ -22,29 +22,29 @@ enum ForestStatus {
   }) {
     switch (status) {
       case ForestStatus.seed:
-        return "${ImagePath.forestDirectory}0.png";
+        return "${ImagePath.forestStageDirectory}0.png";
       case ForestStatus.germination:
-        return "${ImagePath.forestDirectory}1.png";
+        return "${ImagePath.forestStageDirectory}1.png";
       case ForestStatus.sprout:
-        return "${ImagePath.forestDirectory}2.png";
+        return "${ImagePath.forestStageDirectory}2.png";
       case ForestStatus.cotyledons:
-        return "${ImagePath.forestDirectory}3.png";
+        return "${ImagePath.forestStageDirectory}3.png";
       case ForestStatus.mainLeaf:
-        return "${ImagePath.forestDirectory}4.png";
+        return "${ImagePath.forestStageDirectory}4.png";
       case ForestStatus.stemGrowth:
-        return "${ImagePath.forestDirectory}5.png";
+        return "${ImagePath.forestStageDirectory}5.png";
       case ForestStatus.leafGrowth:
-        return "${ImagePath.forestDirectory}6.png";
+        return "${ImagePath.forestStageDirectory}6.png";
       case ForestStatus.completion:
-        return "${ImagePath.forestDirectory}7.png";
+        return "${ImagePath.forestStageDirectory}7.png";
       case ForestStatus.delivery:
-        return "${ImagePath.forestDirectory}8.png";
+        return "${ImagePath.forestStageDirectory}8.png";
       case ForestStatus.doing:
-        return "${ImagePath.forestDirectory}9.png";
+        return "${ImagePath.forestStageDirectory}9.png";
       case ForestStatus.done:
-        return "${ImagePath.forestDirectory}10.png";
+        return "${ImagePath.forestStageDirectory}10.png";
       default:
-        return "${ImagePath.forestDirectory}0.png";
+        return "${ImagePath.forestStageDirectory}0.png";
     }
   }
 
