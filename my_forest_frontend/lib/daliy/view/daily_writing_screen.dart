@@ -73,7 +73,7 @@ class _DailyWritingScreenState extends ConsumerState<DailyWritingScreen> {
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
-                          '${widget.id}. ${daily.question}',
+                          daily.question,
                           style: MyTextStyle.bodyMedium,
                         ),
                       ),
@@ -200,7 +200,7 @@ class _DailyWritingScreenState extends ConsumerState<DailyWritingScreen> {
               ),
             ),
             PrimaryButton(
-              onPressed: () {
+              onPressed: emotionIndex == -1 || text.isEmpty ? null:() {
                 ref.read(dailyProvider.notifier).updateItem(
                       id: widget.id,
                       answer: text,
