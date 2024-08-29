@@ -92,7 +92,7 @@ class CustomTextFormField extends StatelessWidget {
         hintStyle: (hintText == null)
             ? null
             : (hintStyle == null)
-                ? MyTextStyle.bodyRegular.copyWith(
+                ? MyTextStyle.descriptionRegular.copyWith(
                     color: MyColor.darkGrey,
                   )
                 : hintStyle,
@@ -102,7 +102,7 @@ class CustomTextFormField extends StatelessWidget {
       cursorColor: MyColor.primary,
       cursorHeight: 24.0,
       style: style ??
-          MyTextStyle.bodyRegular.copyWith(
+          MyTextStyle.descriptionRegular.copyWith(
             color: enabled ? MyColor.text : MyColor.middleGrey,
       ),
       maxLength: maxLength,

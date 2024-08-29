@@ -1,27 +1,47 @@
 PODS:
   - Flutter (1.0.0)
+  - flutter_inappwebview_ios (0.0.1):
+    - Flutter
+    - flutter_inappwebview_ios/Core (= 0.0.1)
+    - OrderedSet (~> 5.0)
+  - flutter_inappwebview_ios/Core (0.0.1):
+    - Flutter
+    - OrderedSet (~> 5.0)
   - fluttertoast (0.0.2):
     - Flutter
     - Toast
+  - geocoding_ios (1.0.5):
+    - Flutter
+  - OrderedSet (5.0.0)
   - Toast (4.0.0)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
+  - flutter_inappwebview_ios (from `.symlinks/plugins/flutter_inappwebview_ios/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - geocoding_ios (from `.symlinks/plugins/geocoding_ios/ios`)
 
 SPEC REPOS:
   trunk:
+    - OrderedSet
     - Toast
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  flutter_inappwebview_ios:
+    :path: ".symlinks/plugins/flutter_inappwebview_ios/ios"
   fluttertoast:
     :path: ".symlinks/plugins/fluttertoast/ios"
+  geocoding_ios:
+    :path: ".symlinks/plugins/geocoding_ios/ios"
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_inappwebview_ios: 97215cf7d4677db55df76782dbd2930c5e1c1ea0
   fluttertoast: e9a18c7be5413da53898f660530c56f35edfba9c
+  geocoding_ios: d7460f56e80e118d57678efe5c2cdc888739ff18
+  OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
 
 PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796

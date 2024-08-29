@@ -25,7 +25,23 @@ class ProfileScreen extends ConsumerWidget {
     final user = ref.watch(userProvider);
 
     return DefaultLayout(
-      appbar: const DefaultAppBar(title: '내 정보'),
+      appbar: DefaultAppBar(
+        title: '마이페이지',
+        action: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: IconButton(
+              onPressed: () {
+                context.pushNamed(EditProfileScreen.routeName);
+              },
+              icon: PhosphorIcon(
+                PhosphorIcons.gear(),
+                size: 28.0,
+              ),
+            ),
+          ),
+        ],
+      ),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

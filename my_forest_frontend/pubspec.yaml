@@ -49,6 +49,8 @@ dependencies:
   loading_animation_widget: ^1.2.1
   animated_toggle_switch: ^0.8.2
   percent_indicator: ^4.0.1
+  kpostal:
+  multi_dropdown: ^2.1.4
 
   # Statement Manager
   go_router: ^7.0.1
