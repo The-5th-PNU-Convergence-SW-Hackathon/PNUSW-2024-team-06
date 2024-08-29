@@ -26,16 +26,16 @@ class ForestStateNotifier extends StateNotifier<List<ForestModel>> {
 
     state = List.generate(
       forests.length,
-          (index) =>
-          ForestModel(
-            id: index.toString(),
-            imageUrl: "${ImagePath.forestDirectory}$index.png",
-            nickname: '',
-            title: forests.elementAt(index),
-            description: forestData[forests.elementAt(index)]![0],
-            effect: forestData[forests.elementAt(index)]![1],
-            status: ForestStatus.seed,
-          ),
+      (index) => ForestModel(
+        id: index.toString(),
+        imageUrl: "${ImagePath.forestDirectory}$index.png",
+        nickname: '',
+        title: forests.elementAt(index),
+        description: forestData[forests.elementAt(index)]![0],
+        effect: forestData[forests.elementAt(index)]![1],
+        percentage: 0,
+        status: ForestStatus.seed,
+      ),
     );
   }
 }

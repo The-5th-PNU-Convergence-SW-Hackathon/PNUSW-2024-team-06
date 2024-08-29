@@ -88,7 +88,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     alignment: Alignment.center,
                     child: Image.asset(
                       (forest is ForestModel)
-                          ? forest.imageUrl
+                          ? ForestStatus.getImageUrl(status: forest.status)
                           : ImagePath.appIcon,
                       width: 80.0,
                     ),
@@ -146,7 +146,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                       ),
                                       const SizedBox(height: 4.0),
                                       Text(
-                                        '${forest.title} ${forest.description}',
+                                        forest.title,
                                         style: MyTextStyle.bodyRegular.copyWith(
                                           color: MyColor.darkGrey,
                                         ),
@@ -163,12 +163,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          ForestStatus.getStageInfo(
-                                              status: forest.status),
+                                          "${forest.percentage} %",
                                           style: MyTextStyle.bodyMedium,
                                         ),
                                         Text(
-                                          forest.status.label,
+                                          forest.status.label.split(' ').first,
                                           style: MyTextStyle.descriptionRegular
                                               .copyWith(
                                             color: MyColor.darkGrey,
