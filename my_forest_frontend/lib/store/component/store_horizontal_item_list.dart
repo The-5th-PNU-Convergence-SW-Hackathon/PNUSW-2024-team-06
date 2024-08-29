@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:my_forest_frontend/guide/model/guide_model.dart';
+import 'package:my_forest_frontend/store/component/product_card.dart';
 
-import 'guide_card.dart';
+import '../model/product_model.dart';
 
-class HorizontalItemList extends StatelessWidget {
-  final List<GuideModel> guides;
+class StoreHorizontalItemList extends StatelessWidget {
+  final List<ProductModel> products;
 
-  const HorizontalItemList({
+  const StoreHorizontalItemList({
     super.key,
-    required this.guides,
+    required this.products,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 194.0,
+      height: 200.0,
       child: ListView.separated(
         physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
@@ -22,18 +22,16 @@ class HorizontalItemList extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
           horizontal: 24.0,
         ),
-        itemCount: guides.length,
+        itemCount: products.length,
         itemBuilder: (context, index) {
-          final guide = guides[index];
+          final product = products[index];
 
           return GestureDetector(
-            onTap: () {
-              // context.pushNamed(
-              //   ProductDetailScreen.routeName,
-              //   pathParameters: {'id': guide.id.toString()},
-              // );
-            },
-            child: GuideCard.fromModel(model: guide),
+            onTap: () {},
+            child: ProductCard.fromModel(
+              model: product,
+              itemWidth: 120.0,
+            ),
           );
         },
         separatorBuilder: (context, index) {

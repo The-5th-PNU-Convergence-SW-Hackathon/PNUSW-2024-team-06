@@ -6,7 +6,7 @@ import 'package:my_forest_frontend/common/const/colors.dart';
 import '../../common/const/text_styles.dart';
 import '../../common/layout/default_app_bar.dart';
 import '../../common/layout/default_layout.dart';
-import '../component/horizontal_item_list.dart';
+import '../component/guide_horizontal_item_list.dart';
 import '../component/vertical_item_grid.dart';
 import '../provider/guide_provider.dart';
 
@@ -46,7 +46,7 @@ class GuideScreen extends ConsumerWidget {
                 ],
               ),
             ),
-            HorizontalItemList(guides: guides),
+            GuideHorizontalItemList(guides: guides),
             const SizedBox(height: 40.0),
             DividerContainer(),
             Padding(

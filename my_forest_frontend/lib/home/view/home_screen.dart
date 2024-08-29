@@ -7,7 +7,7 @@ import 'package:my_forest_frontend/common/const/colors.dart';
 import 'package:my_forest_frontend/common/const/text_styles.dart';
 import 'package:my_forest_frontend/home/provider/water_heart_provider.dart';
 import 'package:my_forest_frontend/home/view/grow_stage_screen.dart';
-import 'package:my_forest_frontend/store/view/store_screen.dart';
+import 'package:my_forest_frontend/store/view/product_screen.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -220,8 +220,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                         SecondaryButton(
                                           onPressed: () {
                                             context.pop();
-                                            context
-                                                .goNamed(StoreScreen.routeName);
+                                            context.goNamed(
+                                                ProductScreen.routeName);
                                           },
                                           child: const Text('스토어로 이동'),
                                         ),
@@ -313,8 +313,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                         SecondaryButton(
                                           onPressed: () {
                                             context.pop();
-                                            context
-                                                .goNamed(StoreScreen.routeName);
+                                            context.goNamed(
+                                                ProductScreen.routeName);
                                           },
                                           child: const Text('스토어로 이동'),
                                         ),

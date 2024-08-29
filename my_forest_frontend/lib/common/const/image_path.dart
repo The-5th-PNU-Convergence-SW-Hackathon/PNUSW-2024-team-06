@@ -34,4 +34,8 @@ class ImagePath {
 
   // emotion
   static const emotionDirectory = "asset/img/emotion/";
+
+  // product
+  static const productDirectory = "asset/img/product/";
+
 }

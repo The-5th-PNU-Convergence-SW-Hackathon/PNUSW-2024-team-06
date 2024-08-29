@@ -11,7 +11,7 @@ const Map<int, String> NAV_INDEX_ENDPOINT_MAPPER = {
   0: '/home',
   1: '/guide',
   2: '/daily',
-  3: '/store',
+  3: '/product',
   4: '/profile'
 };
 
