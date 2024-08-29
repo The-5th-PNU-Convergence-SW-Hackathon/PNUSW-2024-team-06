@@ -29,4 +29,22 @@ class ForestModel extends ForestModelBase {
     required this.description,
     required this.status,
   });
+
+  ForestModel copyWith({
+    String? id,
+    String? imageUrl,
+    String? nickname,
+    String? title,
+    String? description,
+    ForestStatus? status,
+  }) {
+    return ForestModel(
+      id: id ?? this.id,
+      imageUrl: imageUrl ?? this.imageUrl,
+      nickname: nickname ?? this.nickname,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      status: status ?? this.status,
+    );
+  }
 }
