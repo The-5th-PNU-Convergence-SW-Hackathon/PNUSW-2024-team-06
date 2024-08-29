@@ -10,6 +10,7 @@ import '../../common/const/image_path.dart';
 import '../../common/const/text_styles.dart';
 import '../../common/layout/default_app_bar.dart';
 import '../../common/layout/default_layout.dart';
+import '../../forest/component/delivery_status_container.dart';
 import '../model/user_model.dart';
 import '../provider/user_provider.dart';
 import 'edit_profile_screen.dart';
@@ -53,12 +54,14 @@ class ProfileScreen extends ConsumerWidget {
                 user: user,
               ),
             const DividerContainer(topHeight: 32.0, bottomHeight: 20.0),
+            const DeliveryStatusContainer(),
+            const SizedBox(height: 20.0),
             renderIconAndTextButton(
               icon: PhosphorIcon(
-                PhosphorIcons.userList(),
+                PhosphorIcons.bagSimple(),
                 size: 28.0,
               ),
-              title: '내 정보 관리',
+              title: '내 아이템',
               onTap: () {
                 context.pushNamed(EditProfileScreen.routeName);
               },

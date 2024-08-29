@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_forest_frontend/common/const/colors.dart';
 import 'package:my_forest_frontend/common/const/text_styles.dart';
-import 'package:my_forest_frontend/home/model/enum/forest_status.dart';
 
 import '../../common/layout/default_app_bar.dart';
 import '../../common/layout/default_layout.dart';
+import '../../forest/model/enum/forest_status.dart';
 
 class GrowStageScreen extends ConsumerWidget {
   static String get routeName => "grow_stage";

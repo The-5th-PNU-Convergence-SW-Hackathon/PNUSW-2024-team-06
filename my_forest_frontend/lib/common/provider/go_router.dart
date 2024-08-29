@@ -4,6 +4,7 @@ import 'package:my_forest_frontend/daliy/view/daily_screen.dart';
 import 'package:my_forest_frontend/daliy/view/daily_writing_screen.dart';
 import 'package:my_forest_frontend/guide/view/guide_screen.dart';
 
+import '../../forest/view/delivery_screen.dart';
 import '../../home/view/grow_stage_screen.dart';
 import '../../home/view/home_screen.dart';
 import '../../notification/view/notification_detail_screen.dart';
@@ -170,6 +171,12 @@ List<RouteBase> get routes => [
                     path: 'edit',
                     name: EditProfileScreen.routeName,
                     builder: (context, state) => EditProfileScreen(),
+                  ),
+                  GoRoute(
+                    parentNavigatorKey: _rootNavigatorKey,
+                    path: 'delivery',
+                    name: DeliveryScreen.routeName,
+                    builder: (context, state) => DeliveryScreen(),
                   ),
                   // GoRoute(
                   //   parentNavigatorKey: _rootNavigatorKey,

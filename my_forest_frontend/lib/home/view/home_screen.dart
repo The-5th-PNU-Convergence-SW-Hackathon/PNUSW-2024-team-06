@@ -5,7 +5,6 @@ import 'package:my_forest_frontend/common/component/show/custom_general_dialog_b
 import 'package:my_forest_frontend/common/component/show/show_custom_general_dialog.dart';
 import 'package:my_forest_frontend/common/const/colors.dart';
 import 'package:my_forest_frontend/common/const/text_styles.dart';
-import 'package:my_forest_frontend/home/provider/water_heart_provider.dart';
 import 'package:my_forest_frontend/home/view/grow_stage_screen.dart';
 import 'package:my_forest_frontend/store/view/product_screen.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -14,6 +13,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import '../../common/const/image_path.dart';
 import '../../common/layout/default_app_bar.dart';
 import '../../common/layout/default_layout.dart';
+import '../../forest/provider/water_heart_provider.dart';
 import '../../notification/view/notification_screen.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {

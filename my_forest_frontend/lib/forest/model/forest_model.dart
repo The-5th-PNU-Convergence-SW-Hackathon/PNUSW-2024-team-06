@@ -1,4 +1,5 @@
-import 'package:my_forest_frontend/home/model/enum/forest_status.dart';
+
+import 'enum/forest_status.dart';
 
 abstract class ForestModelBase {}
 

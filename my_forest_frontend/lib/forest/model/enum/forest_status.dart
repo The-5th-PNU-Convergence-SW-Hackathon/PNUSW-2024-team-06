@@ -9,7 +9,9 @@ enum ForestStatus {
   stemGrowth("줄기 성장 단계"),
   leafGrowth("잎 성장 단계"),
   completion("성체 단계"),
-  delivery("배송 단계");
+  delivery("배송 단계"),
+  doing("배송 중"),
+  done("배송 완료");
 
   const ForestStatus(this.label);
 
@@ -37,8 +39,12 @@ enum ForestStatus {
         return "${ImagePath.forestDirectory}7.png";
       case ForestStatus.delivery:
         return "${ImagePath.forestDirectory}8.png";
-      default:
+      case ForestStatus.doing:
         return "${ImagePath.forestDirectory}9.png";
+      case ForestStatus.done:
+        return "${ImagePath.forestDirectory}10.png";
+      default:
+        return "${ImagePath.forestDirectory}0.png";
     }
   }
 

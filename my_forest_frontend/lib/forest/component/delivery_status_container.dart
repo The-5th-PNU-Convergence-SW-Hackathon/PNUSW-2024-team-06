@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_forest_frontend/common/component/default_button.dart';
-import 'package:my_forest_frontend/home/model/enum/forest_status.dart';
-import 'package:my_forest_frontend/home/provider/forest_provider.dart';
+import 'package:go_router/go_router.dart';
+import 'package:my_forest_frontend/forest/view/delivery_screen.dart';
 
+import '../../common/component/default_button.dart';
 import '../../common/const/colors.dart';
 import '../../common/const/text_styles.dart';
+import '../model/enum/forest_status.dart';
+import '../provider/forest_provider.dart';
 
 class DeliveryStatusContainer extends ConsumerWidget {
   const DeliveryStatusContainer({super.key});
@@ -49,7 +51,9 @@ class DeliveryStatusContainer extends ConsumerWidget {
                   ),
                   const Expanded(child: SizedBox(width: 1.0)),
                   SecondaryButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.goNamed(DeliveryScreen.routeName);
+                    },
                     child: const Text('배송하기'),
                   ),
                 ],
