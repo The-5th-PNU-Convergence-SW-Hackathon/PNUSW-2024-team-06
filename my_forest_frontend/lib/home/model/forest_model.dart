@@ -1,6 +1,18 @@
 import 'package:my_forest_frontend/home/model/enum/forest_status.dart';
 
-class ForestModel {
+abstract class ForestModelBase {}
+
+class ForestModelLoading extends ForestModelBase {}
+
+class ForestModelError extends ForestModelBase {
+  final String message;
+
+  ForestModelError({
+    required this.message,
+  });
+}
+
+class ForestModel extends ForestModelBase {
   final String id;
   final String imageUrl;
   final String nickname;

@@ -1,15 +1,15 @@
 import 'package:my_forest_frontend/common/const/image_path.dart';
 
 enum ForestStatus {
-  seed("씨앗"),
-  germination("발아"),
-  sprout("새싹"),
-  cotyledons("떡잎"),
-  mainLeaf("본잎"),
-  stemGrowth("줄기 성장"),
-  leafGrowth("잎 성장"),
-  completion("성체"),
-  delivery("배송");
+  seed("씨앗 단계"),
+  germination("발아 단계"),
+  sprout("새싹 단계"),
+  cotyledons("떡잎 단계"),
+  mainLeaf("본잎 단계"),
+  stemGrowth("줄기 성장 단계"),
+  leafGrowth("잎 성장 단계"),
+  completion("성체 단계"),
+  delivery("배송 단계");
 
   const ForestStatus(this.label);
 
