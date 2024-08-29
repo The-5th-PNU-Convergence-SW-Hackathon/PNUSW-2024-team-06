@@ -1,3 +1,5 @@
+import 'package:my_forest_frontend/forest/model/forest_model.dart';
+
 import 'address_model.dart';
 
 abstract class UserModelBase {}
@@ -22,6 +24,11 @@ class UserModel extends UserModelBase {
   final String phone;
   final String profileImage;
   final AddressModel address;
+  final int waterQuantity;
+  final int waterCount;
+  final int heartQuantity;
+  final int heartCount;
+  final ForestModel? forest;
 
   UserModel({
     required this.id,
@@ -33,6 +40,11 @@ class UserModel extends UserModelBase {
     required this.phone,
     required this.profileImage,
     required this.address,
+    required this.waterQuantity,
+    required this.waterCount,
+    required this.heartQuantity,
+    required this.heartCount,
+    this.forest,
   });
 
   UserModel copyWith({
@@ -45,7 +57,11 @@ class UserModel extends UserModelBase {
     String? phone,
     String? profileImage,
     AddressModel? address,
-    List<String>? recentlyViewedItems,
+    int? waterQuantity,
+    int? waterCount,
+    int? heartQuantity,
+    int? heartCount,
+    ForestModel? forest,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -57,6 +73,11 @@ class UserModel extends UserModelBase {
       phone: phone ?? this.phone,
       profileImage: profileImage ?? this.profileImage,
       address: address ?? this.address,
+      waterQuantity: waterQuantity ?? this.waterQuantity,
+      waterCount: waterCount ?? this.waterCount,
+      heartQuantity: heartQuantity ?? this.heartQuantity,
+      heartCount: heartCount ?? this.heartCount,
+      forest: forest ?? this.forest,
     );
   }
 }

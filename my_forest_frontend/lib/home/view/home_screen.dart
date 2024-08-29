@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -5,15 +7,19 @@ import 'package:my_forest_frontend/common/component/show/custom_general_dialog_b
 import 'package:my_forest_frontend/common/component/show/show_custom_general_dialog.dart';
 import 'package:my_forest_frontend/common/const/colors.dart';
 import 'package:my_forest_frontend/common/const/text_styles.dart';
+import 'package:my_forest_frontend/forest/model/enum/forest_status.dart';
+import 'package:my_forest_frontend/forest/view/select_forest_screen.dart';
 import 'package:my_forest_frontend/home/view/grow_stage_screen.dart';
 import 'package:my_forest_frontend/store/view/product_screen.dart';
+import 'package:my_forest_frontend/user/model/user_model.dart';
+import 'package:my_forest_frontend/user/provider/user_provider.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../common/const/image_path.dart';
 import '../../common/layout/default_app_bar.dart';
 import '../../common/layout/default_layout.dart';
-import '../../forest/provider/water_heart_provider.dart';
+import '../../forest/model/forest_model.dart';
 import '../../notification/view/notification_screen.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -31,10 +37,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final waterQuantity = ref.watch(waterQuantityProvider);
-    final waterCount = ref.watch(waterCountProvider);
-    final heartQuantity = ref.watch(heartQuantityProvider);
-    final heartCount = ref.watch(heartCountProvider);
+    final user = ref.watch(userProvider) as UserModel;
+    final ForestModel? forest = user.forest;
 
     return DefaultLayout(
       appbar: DefaultAppBar(
@@ -83,7 +87,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   child: Align(
                     alignment: Alignment.center,
                     child: Image.asset(
-                      ImagePath.appIcon,
+                      (forest is ForestModel)
+                          ? forest.imageUrl
+                          : ImagePath.appIcon,
                       width: 80.0,
                     ),
                   ),
@@ -110,70 +116,108 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       ),
                     ),
                   ),
-                Positioned(
-                  bottom: 20.0,
-                  child: InkWell(
-                    onTap: () {
-                      context.pushNamed(GrowStageScreen.routeName);
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width - 48,
-                      decoration: BoxDecoration(
-                          color: MyColor.white,
-                          borderRadius: BorderRadius.circular(12.0)),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 24.0,
-                          vertical: 16.0,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
+                (forest is ForestModel)
+                    ? Positioned(
+                        bottom: 20.0,
+                        child: InkWell(
+                          onTap: () {
+                            context.pushNamed(GrowStageScreen.routeName);
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width - 48,
+                            decoration: BoxDecoration(
+                                color: MyColor.white,
+                                borderRadius: BorderRadius.circular(12.0)),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 24.0,
+                                vertical: 16.0,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  '초록이',
-                                  style: MyTextStyle.bigTitleBold,
-                                ),
-                                const SizedBox(height: 4.0),
-                                Text(
-                                  '몬스테라 Monstera',
-                                  style: MyTextStyle.bodyRegular.copyWith(
-                                    color: MyColor.darkGrey,
+                                      Text(
+                                        forest.nickname,
+                                        style: MyTextStyle.bigTitleBold,
+                                      ),
+                                      const SizedBox(height: 4.0),
+                                      Text(
+                                        '${forest.title} ${forest.description}',
+                                        style: MyTextStyle.bodyRegular.copyWith(
+                                          color: MyColor.darkGrey,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                              ],
+                                  CircularPercentIndicator(
+                                    backgroundColor: MyColor.middleGrey,
+                                    radius: 40.0,
+                                    lineWidth: 5.0,
+                                    percent: 0.26,
+                                    center: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          ForestStatus.getStageInfo(
+                                              status: forest.status),
+                                          style: MyTextStyle.bodyMedium,
+                                        ),
+                                        Text(
+                                          forest.status.label,
+                                          style: MyTextStyle.descriptionRegular
+                                              .copyWith(
+                                            color: MyColor.darkGrey,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    progressColor: Colors.green,
+                                  )
+                                ],
+                              ),
                             ),
-                            CircularPercentIndicator(
-                              backgroundColor: MyColor.middleGrey,
-                              radius: 40.0,
-                              lineWidth: 5.0,
-                              percent: 0.26,
-                              center: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                          ),
+                        ),
+                      )
+                    : Positioned(
+                        bottom: 40.0,
+                        child: InkWell(
+                          onTap: () {
+                            context.goNamed(SelectForestScreen.routeName);
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width - 48,
+                            decoration: BoxDecoration(
+                                color: MyColor.white,
+                                borderRadius: BorderRadius.circular(12.0)),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 24.0,
+                                vertical: 16.0,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   const Text(
-                                    "26%",
-                                    style: MyTextStyle.bodyMedium,
+                                    '내 반려식물 선택하기',
+                                    style: MyTextStyle.bodyTitleMedium,
                                   ),
-                                  Text(
-                                    "새싹",
-                                    style:
-                                        MyTextStyle.descriptionRegular.copyWith(
-                                      color: MyColor.darkGrey,
-                                    ),
+                                  PhosphorIcon(
+                                    PhosphorIcons.caretRight(),
+                                    size: 32.0,
                                   ),
                                 ],
                               ),
-                              progressColor: Colors.green,
-                            )
-                          ],
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                )
+                      )
               ],
             ),
             const SizedBox(height: 20.0),
@@ -198,7 +242,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       Expanded(
                         child: InkWell(
                           onTap: () async {
-                            if (waterQuantity < 1) {
+                            if (user.waterQuantity < 1) {
                               showCustomGeneralDialog(
                                 context: context,
                                 bottomSheetWidget:
@@ -236,8 +280,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           },
                           child: _renderItemContainer(
                             title: "물 주기",
-                            quantity: waterQuantity,
-                            count: waterCount,
+                            quantity: user.waterQuantity,
+                            count: user.waterCount,
                           ),
                         ),
                       ),
@@ -245,7 +289,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       Expanded(
                         child: InkWell(
                           onTap: () async {
-                            if (heartQuantity < 1) {
+                            if (user.heartQuantity < 1) {
                               showCustomGeneralDialog(
                                 context: context,
                                 bottomSheetWidget:
@@ -283,8 +327,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           },
                           child: _renderItemContainer(
                             title: '영양분 주기',
-                            quantity: heartQuantity,
-                            count: heartCount,
+                            quantity: user.heartQuantity,
+                            count: user.heartCount,
                           ),
                         ),
                       ),
