@@ -57,7 +57,7 @@ class _ForestVerticalItemGridState
             showCustomGeneralDialog(
               context: context,
               bottomSheetWidget: Container(
-                height: 260.0,
+                height: 280.0,
                 color: MyColor.white,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -72,7 +72,7 @@ class _ForestVerticalItemGridState
                       ),
                       const SizedBox(height: 20.0),
                       CustomTextFormField(
-                        hintText: "직접 입력, 최대 10글자",
+                        hintText: "직접 입력, 최대 8글자",
                         onChanged: (String value) {
                           nickname = value;
                         },
@@ -80,6 +80,7 @@ class _ForestVerticalItemGridState
                         validator: (String? value) {
                           return null;
                         },
+                        maxLength: 8,
                       ),
                       const SizedBox(height: 20.0),
                       PrimaryButton(
