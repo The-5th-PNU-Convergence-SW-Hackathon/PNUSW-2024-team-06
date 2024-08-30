@@ -42,8 +42,7 @@ class GuideCard extends StatelessWidget {
           child: Image.asset(
             imageUrl,
             fit: BoxFit.fill,
-            // width: 140.0,
-            // height: 140.0,
+            width: double.infinity,
           ),
         ),
         Padding(

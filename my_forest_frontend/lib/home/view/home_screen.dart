@@ -318,7 +318,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                             isHeart = true;
                             setState(() {});
-                            // await Future.delayed(const Duration(seconds: 3));
+                            await Future.delayed(const Duration(seconds: 3));
                             isHeart = false;
                             setState(() {});
 
@@ -359,7 +359,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return Column(
       children: [
         Container(
-          color: const Color(0xFFDEF7FF),
+          color: const Color(0xFFC4F1FF),
           width: double.infinity,
           height: 140.0,
         ),

@@ -26,35 +26,11 @@ class GuideScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const SizedBox(height: 20.0),
-                  const Text(
-                    '나의 반려 식물',
-                    style: MyTextStyle.bodyTitleMedium,
-                  ),
-                  const SizedBox(height: 4.0),
-                  Text(
-                    '나의 반려 식물에 대해 알아가기',
-                    style: MyTextStyle.descriptionRegular.copyWith(
-                      color: MyColor.darkGrey,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            GuideHorizontalItemList(guides: guides),
-            const SizedBox(height: 40.0),
-            DividerContainer(),
-            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const SizedBox(height: 40.0),
+                  const SizedBox(height: 20.0),
                   const Text(
                     '식물 도감',
                     style: MyTextStyle.bodyTitleMedium,

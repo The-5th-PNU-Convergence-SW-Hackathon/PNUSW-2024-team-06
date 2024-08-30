@@ -29,7 +29,7 @@ class GuideVerticalItemGrid extends ConsumerWidget {
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: itemSpacing,
+        mainAxisSpacing: itemSpacing * 2,
         crossAxisSpacing: itemSpacing,
         childAspectRatio: itemWidth / (itemWidth + 80),
       ),

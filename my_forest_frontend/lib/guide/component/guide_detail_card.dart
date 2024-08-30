@@ -51,7 +51,7 @@ class GuideDetailCard extends StatelessWidget {
               width: double.infinity,
             ),
           ),
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 16.0),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
@@ -79,7 +79,7 @@ class GuideDetailCard extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 16.0),
+          const SizedBox(height: 20.0),
         ],
       ),
     );
