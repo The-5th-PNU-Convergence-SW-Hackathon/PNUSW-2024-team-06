@@ -16,19 +16,19 @@ class GrowStageScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return DefaultLayout(
       appbar: const DefaultAppBar(title: '성장 단계'),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SizedBox(height: 40.0),
-            const Text(
-              '성장 단계를 살펴 보아요',
-              style: MyTextStyle.bigTitleBold,
-            ),
-            const SizedBox(height: 40.0),
-            Expanded(
-              child: ListView.separated(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const SizedBox(height: 40.0),
+              const Text(
+                '성장 단계를 살펴 보아요',
+                style: MyTextStyle.bodyTitleBold,
+              ),
+              const SizedBox(height: 20.0),
+              ListView.separated(
                 physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int index) {
@@ -39,10 +39,11 @@ class GrowStageScreen extends ConsumerWidget {
                 separatorBuilder: (BuildContext context, int index) {
                   return const SizedBox(height: 20.0);
                 },
-                itemCount: ForestStatus.values.length,
+                itemCount: ForestStatus.values.length - 2,
               ),
-            ),
-          ],
+              const SizedBox(height: 20.0),
+            ],
+          ),
         ),
       ),
     );
@@ -56,9 +57,12 @@ class GrowStageScreen extends ConsumerWidget {
 
     return Row(
       children: [
-        CircleAvatar(
-          backgroundColor: MyColor.secondary,
-          radius: 40.0,
+        Container(
+          decoration: BoxDecoration(
+            color: MyColor.third,
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          width: 80.0,
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: Image.asset(
@@ -69,7 +73,7 @@ class GrowStageScreen extends ConsumerWidget {
         ),
         const SizedBox(width: 20.0),
         Text(
-          "${status.label} 단계",
+          status.label,
           style: MyTextStyle.bodyMedium,
         ),
         const Expanded(child: SizedBox(width: 1.0)),
