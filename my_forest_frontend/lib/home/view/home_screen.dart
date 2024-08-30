@@ -252,6 +252,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       Expanded(
                         child: InkWell(
                           onTap: () async {
+                            if(user.forest == null) {
+                              showCustomGeneralDialog(
+                                context: context,
+                                bottomSheetWidget:
+                                CustomGeneralDialogBottomSheetWidget(
+                                  title: '현재 반려중인 식물이 없습니다.',
+                                  onPressed: () {
+                                    context.pop();
+                                    context.goNamed(SelectForestScreen.routeName);
+                                  },
+                                  buttonText: '반려식물 선택하기',
+                                ),
+                              );
+                              return;
+                            }
+
                             if (user.waterQuantity < 1) {
                               showCustomGeneralDialog(
                                 context: context,
@@ -300,6 +316,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       Expanded(
                         child: InkWell(
                           onTap: () async {
+                            if(user.forest == null) {
+                              showCustomGeneralDialog(
+                                context: context,
+                                bottomSheetWidget:
+                                CustomGeneralDialogBottomSheetWidget(
+                                  title: '현재 반려중인 식물이 없습니다.',
+                                  onPressed: () {
+                                    context.pop();
+                                    context.goNamed(SelectForestScreen.routeName);
+                                  },
+                                  buttonText: '반려식물 선택하기',
+                                ),
+                              );
+                              return;
+                            }
+
                             if (user.heartQuantity < 1) {
                               showCustomGeneralDialog(
                                 context: context,
