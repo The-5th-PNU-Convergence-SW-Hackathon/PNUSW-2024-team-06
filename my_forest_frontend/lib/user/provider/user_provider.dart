@@ -82,6 +82,39 @@ class UserStateNotifier extends StateNotifier<UserModelBase> {
     );
   }
 
+  void energyForest() {
+    if ((state as UserModel).forest == null) {
+      return;
+    }
+    state = (state as UserModel).copyWith(
+      forest: (state as UserModel).forest!.copyWith(
+            percentage: 97,
+          ),
+    );
+  }
+
+  void deliveryForest() {
+    if ((state as UserModel).forest == null) {
+      return;
+    }
+    state = (state as UserModel).copyWith(
+      forest: (state as UserModel).forest!.copyWith(
+        percentage: 110,
+      ),
+    );
+  }
+
+  void doneForest() {
+    if ((state as UserModel).forest == null) {
+      return;
+    }
+    state = (state as UserModel).copyWith(
+      forest: (state as UserModel).forest!.copyWith(
+        percentage: 120,
+      ),
+    );
+  }
+
   void initItems() {
     state = defaultUserModel;
   }

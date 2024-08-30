@@ -54,28 +54,34 @@ class DeliveryStatusContainer extends ConsumerWidget {
                           height: 72.0,
                           fit: BoxFit.fill,
                         ),
-                        const SizedBox(width: 4.0),
+                        const SizedBox(width: 8.0),
                         Text(
                           ForestStatus.getStatus(percentage: forest.percentage)
                               .label,
                           style: MyTextStyle.bodyRegular,
                         ),
                         const Expanded(child: SizedBox(width: 1.0)),
-                        ForestStatus.getStatus(percentage: forest.percentage) ==
-                                ForestStatus.delivery
-                            ? SecondaryButton(
-                                onPressed: () {
-                                  context.goNamed(DeliveryScreen.routeName);
-                                  ref.read(userProvider.notifier).initForest();
-                                },
-                                child: const Text('배송하기'),
-                              )
-                            : SecondaryButton(
-                                onPressed: () {
-                                  context.goNamed(HomeScreen.routeName);
-                                },
-                                child: const Text('성장 시키기'),
-                              ),
+                        if (ForestStatus.getStatus(
+                                percentage: forest.percentage) ==
+                            ForestStatus.delivery)
+                          SecondaryButton(
+                            onPressed: () {
+                              context.goNamed(DeliveryScreen.routeName);
+                              ref.read(userProvider.notifier).initForest();
+                            },
+                            child: const Text('배송하기'),
+                          )
+                        else if (ForestStatus.getStatus(
+                                percentage: forest.percentage) ==
+                            ForestStatus.doing)
+                          const SizedBox(width: 1.0)
+                        else
+                          SecondaryButton(
+                            onPressed: () {
+                              context.goNamed(HomeScreen.routeName);
+                            },
+                            child: const Text('성장 시키기'),
+                          ),
                       ],
                     )
                   : Padding(

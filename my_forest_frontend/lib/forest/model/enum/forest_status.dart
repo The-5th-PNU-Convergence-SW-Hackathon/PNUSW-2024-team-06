@@ -10,8 +10,8 @@ enum ForestStatus {
   leafGrowth("잎 성장 단계"),
   completion("성체 단계"),
   delivery("배송 단계"),
-  doing("배송 중"),
-  done("배송 완료");
+  doing("배송중"),
+  done("배송완료");
 
   const ForestStatus(this.label);
 
@@ -79,24 +79,28 @@ enum ForestStatus {
     required int percentage,
   }) {
     switch (percentage) {
-      case >= 0 && < 9:
+      case >= 0 && < 10:
         return ForestStatus.seed;
-      case >= 10 && < 19:
+      case >= 10 && < 20:
         return ForestStatus.germination;
-      case >= 20 && < 29:
+      case >= 20 && < 30:
         return ForestStatus.sprout;
-      case >= 30 && < 44:
+      case >= 30 && < 45:
         return ForestStatus.cotyledons;
-      case >= 45 && < 59:
+      case >= 45 && < 60:
         return ForestStatus.mainLeaf;
-      case >= 60 && < 74:
+      case >= 60 && < 75:
         return ForestStatus.stemGrowth;
-      case >= 75 && < 89:
+      case >= 75 && < 90:
         return ForestStatus.leafGrowth;
-      case >= 90 && < 99:
+      case >= 90 && < 100:
         return ForestStatus.completion;
-      case >= 100:
+      case >= 100 && < 110:
         return ForestStatus.delivery;
+      case >= 110 && < 120:
+        return ForestStatus.doing;
+      case >= 120:
+        return ForestStatus.done;
       default:
         return ForestStatus.seed;
     }

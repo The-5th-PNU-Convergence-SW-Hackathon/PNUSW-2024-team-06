@@ -77,9 +77,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 Positioned(
                   right: 16.0,
                   top: 16.0,
-                  child: Image.asset(
-                    ImagePath.sun,
-                    width: 80.0,
+                  child: GestureDetector(
+                    onLongPress: () {
+                      ref.read(userProvider.notifier).energyForest();
+                    },
+                    child: Image.asset(
+                      ImagePath.sun,
+                      width: 80.0,
+                    ),
                   ),
                 ),
                 Positioned(
@@ -93,7 +98,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   percentage: forest.percentage),
                             )
                           : ImagePath.appIcon,
-                      width: 80.0,
+                      width: 100.0,
                     ),
                   ),
                 ),
