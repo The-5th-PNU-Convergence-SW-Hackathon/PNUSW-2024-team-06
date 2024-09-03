@@ -8,7 +8,6 @@ import 'package:my_forest_frontend/common/component/show/show_custom_general_dia
 import 'package:my_forest_frontend/common/const/colors.dart';
 import 'package:my_forest_frontend/common/const/text_styles.dart';
 import 'package:my_forest_frontend/forest/model/enum/forest_status.dart';
-import 'package:my_forest_frontend/forest/view/select_forest_screen.dart';
 import 'package:my_forest_frontend/home/view/grow_stage_screen.dart';
 import 'package:my_forest_frontend/store/view/product_screen.dart';
 import 'package:my_forest_frontend/user/model/user_model.dart';
@@ -92,12 +91,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   child: Align(
                     alignment: Alignment.center,
                     child: Image.asset(
-                      (forest is ForestModel)
-                          ? ForestStatus.getImageUrl(
-                              status: ForestStatus.getStatus(
-                                  percentage: forest.percentage),
-                            )
-                          : ImagePath.appIcon,
+                      ForestStatus.getImageUrl(
+                        status: ForestStatus.getStatus(
+                          percentage: forest!.percentage,
+                        ),
+                      ),
                       width: 100.0,
                     ),
                   ),
@@ -124,115 +122,78 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       ),
                     ),
                   ),
-                (forest is ForestModel)
-                    ? Positioned(
-                        bottom: 20.0,
-                        child: InkWell(
-                          onTap: () {
-                            context.pushNamed(GrowStageScreen.routeName);
-                          },
-                          child: Container(
-                            width: MediaQuery.of(context).size.width - 48,
-                            decoration: BoxDecoration(
-                                color: MyColor.white,
-                                borderRadius: BorderRadius.circular(12.0)),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 24.0,
-                                vertical: 16.0,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
+                Positioned(
+                  bottom: 20.0,
+                  child: InkWell(
+                    onTap: () {
+                      context.pushNamed(GrowStageScreen.routeName);
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width - 48,
+                      decoration: BoxDecoration(
+                          color: MyColor.white,
+                          borderRadius: BorderRadius.circular(12.0)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 24.0,
+                          vertical: 16.0,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                      Text(
-                                        forest.nickname,
-                                        style: MyTextStyle.bigTitleBold,
-                                      ),
-                                      const SizedBox(height: 4.0),
-                                      Text(
-                                        forest.title,
-                                        style: MyTextStyle.bodyRegular.copyWith(
-                                          color: MyColor.darkGrey,
-                                        ),
-                                      ),
-                                    ],
+                                Text(
+                                  forest.nickname,
+                                  style: MyTextStyle.bigTitleBold,
+                                ),
+                                const SizedBox(height: 4.0),
+                                Text(
+                                  forest.title,
+                                  style: MyTextStyle.bodyRegular.copyWith(
+                                    color: MyColor.darkGrey,
                                   ),
-                                  CircularPercentIndicator(
-                                    backgroundColor: MyColor.middleGrey,
-                                    radius: 40.0,
-                                    lineWidth: 5.0,
-                                    percent: (forest.percentage > 99)
-                                        ? 1.0
-                                        : forest.percentage / 100,
-                                    center: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          (forest.percentage > 99)
-                                              ? "100 %"
-                                              : "${forest.percentage} %",
-                                          style: MyTextStyle.bodyMedium,
-                                        ),
-                                        Text(
-                                          ForestStatus.getStatus(
-                                                  percentage: forest.percentage)
-                                              .label
-                                              .split(' ')
-                                              .first,
-                                          style: MyTextStyle.descriptionRegular
-                                              .copyWith(
-                                            color: MyColor.darkGrey,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    progressColor: Colors.green,
-                                  )
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ),
-                        ),
-                      )
-                    : Positioned(
-                        bottom: 40.0,
-                        child: InkWell(
-                          onTap: () {
-                            context.goNamed(SelectForestScreen.routeName);
-                          },
-                          child: Container(
-                            width: MediaQuery.of(context).size.width - 48,
-                            decoration: BoxDecoration(
-                                color: MyColor.white,
-                                borderRadius: BorderRadius.circular(12.0)),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 24.0,
-                                vertical: 16.0,
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                            CircularPercentIndicator(
+                              backgroundColor: MyColor.middleGrey,
+                              radius: 40.0,
+                              lineWidth: 5.0,
+                              percent: (forest.percentage > 99)
+                                  ? 1.0
+                                  : forest.percentage / 100,
+                              center: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Text(
-                                    '내 반려식물 선택하기',
-                                    style: MyTextStyle.bodyTitleMedium,
+                                  Text(
+                                    (forest.percentage > 99)
+                                        ? "100 %"
+                                        : "${forest.percentage} %",
+                                    style: MyTextStyle.bodyMedium,
                                   ),
-                                  PhosphorIcon(
-                                    PhosphorIcons.caretRight(),
-                                    size: 32.0,
+                                  Text(
+                                    ForestStatus.getStatus(
+                                            percentage: forest.percentage)
+                                        .label
+                                        .split(' ')
+                                        .first,
+                                    style:
+                                        MyTextStyle.descriptionRegular.copyWith(
+                                      color: MyColor.darkGrey,
+                                    ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ),
+                              progressColor: Colors.green,
+                            )
+                          ],
                         ),
-                      )
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
             const SizedBox(height: 20.0),
@@ -257,22 +218,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       Expanded(
                         child: InkWell(
                           onTap: () async {
-                            if(user.forest == null) {
-                              showCustomGeneralDialog(
-                                context: context,
-                                bottomSheetWidget:
-                                CustomGeneralDialogBottomSheetWidget(
-                                  title: '현재 반려중인 식물이 없습니다.',
-                                  onPressed: () {
-                                    context.pop();
-                                    context.goNamed(SelectForestScreen.routeName);
-                                  },
-                                  buttonText: '반려식물 선택하기',
-                                ),
-                              );
-                              return;
-                            }
-
                             if (user.waterQuantity < 1) {
                               showCustomGeneralDialog(
                                 context: context,
@@ -321,22 +266,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       Expanded(
                         child: InkWell(
                           onTap: () async {
-                            if(user.forest == null) {
-                              showCustomGeneralDialog(
-                                context: context,
-                                bottomSheetWidget:
-                                CustomGeneralDialogBottomSheetWidget(
-                                  title: '현재 반려중인 식물이 없습니다.',
-                                  onPressed: () {
-                                    context.pop();
-                                    context.goNamed(SelectForestScreen.routeName);
-                                  },
-                                  buttonText: '반려식물 선택하기',
-                                ),
-                              );
-                              return;
-                            }
-
                             if (user.heartQuantity < 1) {
                               showCustomGeneralDialog(
                                 context: context,
@@ -443,9 +372,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             const SizedBox(height: 8.0),
             Image.asset(
-              title == "물 주기"
-                  ? ImagePath.water
-                  : ImagePath.heart,
+              title == "물 주기" ? ImagePath.water : ImagePath.heart,
               height: 50.0,
             ),
             const SizedBox(height: 8.0),
