@@ -48,20 +48,21 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ),
         leadingWidth: 160,
       ),
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Stack(
-              fit: StackFit.loose,
-              alignment: Alignment.topCenter,
-              children: [
-                _renderBackgroundContainer(),
-                Positioned(
-                  // right: 16.0,
-                  top: 16.0,
-                  child: GestureDetector(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(
+                      ImagePath.defaultBackground,
+                    ),
+                    fit: BoxFit.fill),
+              ),
+              child: Column(
+                children: [
+                  GestureDetector(
                     onLongPress: () {
                       ref.read(userProvider.notifier).energyForest();
                     },
@@ -70,238 +71,249 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       width: 80.0,
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: 140.0,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Image.asset(
-                      ForestStatus.getImageUrl(
-                        status: ForestStatus.getStatus(
-                          percentage: forest!.percentage,
-                        ),
-                      ),
-                      width: 100.0,
-                    ),
-                  ),
-                ),
-                if (isWater)
-                  Positioned(
-                    bottom: 220.0,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Image.asset(
-                        ImagePath.water,
-                        width: 80.0,
-                      ),
-                    ),
-                  ),
-                if (isHeart)
-                  Positioned(
-                    bottom: 220.0,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Image.asset(
-                        ImagePath.heart,
-                        width: 80.0,
-                      ),
-                    ),
-                  ),
-                Positioned(
-                  bottom: 20.0,
-                  child: InkWell(
-                    onTap: () {
-                      context.pushNamed(GrowStageScreen.routeName);
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width - 48,
-                      decoration: BoxDecoration(
-                          color: MyColor.white,
-                          borderRadius: BorderRadius.circular(12.0)),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 24.0,
-                          vertical: 16.0,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  forest.nickname,
-                                  style: MyTextStyle.bigTitleBold,
-                                ),
-                                const SizedBox(height: 4.0),
-                                Text(
-                                  forest.title,
-                                  style: MyTextStyle.bodyRegular.copyWith(
-                                    color: MyColor.darkGrey,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            CircularPercentIndicator(
-                              backgroundColor: MyColor.middleGrey,
-                              radius: 40.0,
-                              lineWidth: 5.0,
-                              percent: (forest.percentage > 99)
-                                  ? 1.0
-                                  : forest.percentage / 100,
-                              center: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    (forest.percentage > 99)
-                                        ? "100 %"
-                                        : "${forest.percentage} %",
-                                    style: MyTextStyle.bodyMedium,
-                                  ),
-                                  Text(
-                                    ForestStatus.getStatus(
-                                            percentage: forest.percentage)
-                                        .label
-                                        .split(' ')
-                                        .first,
-                                    style:
-                                        MyTextStyle.descriptionRegular.copyWith(
-                                      color: MyColor.darkGrey,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              progressColor: Colors.green,
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(height: 20.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const Text(
-                    '쑥쑥 성장시키기',
-                    style: MyTextStyle.bodyTitleMedium,
-                  ),
-                  const SizedBox(height: 4.0),
-                  Text(
-                    '나만의 반려 식물을 쑥쑥 성장 시켜 보세요!',
-                    style: MyTextStyle.descriptionRegular
-                        .copyWith(color: MyColor.darkGrey),
-                  ),
-                  const SizedBox(height: 12.0),
-                  Row(
+                  Stack(
                     children: [
-                      Expanded(
-                        child: InkWell(
-                          onTap: () async {
-                            if (user.waterQuantity < 1) {
-                              showCustomGeneralDialog(
-                                context: context,
-                                bottomSheetWidget:
-                                    CustomGeneralDialogBottomSheetWidget(
-                                  title: '물방울 갯수가 소진 되었습니다.',
-                                  onPressed: () {
-                                    context.pop();
-                                    context.goNamed(ProductScreen.routeName);
-                                  },
-                                  buttonText: '스토어로 이동',
-                                ),
-                              );
-                              return;
-                            }
-
-                            isWater = true;
-                            setState(() {});
-                            await Future.delayed(const Duration(seconds: 2));
-                            isWater = false;
-                            setState(() {});
-
-                            showCustomGeneralDialog(
-                              context: context,
-                              bottomSheetWidget:
-                                  CustomGeneralDialogBottomSheetWidget(
-                                title: '물 주기 성공!',
-                                description:
-                                    '하루에 한 번 물을 줄 수 있어요. 매일 물을 주면 1%씩 성장시킬 수 있어요.',
-                                onPressed: () {
-                                  ref.read(userProvider.notifier).water();
-                                  context.pop();
-                                },
-                                buttonText: '확인',
-                              ),
-                            );
-                          },
-                          child: _renderItemContainer(
-                            title: "물 주기",
-                            quantity: user.waterQuantity,
-                            count: user.waterCount,
+                      Align(
+                        alignment: Alignment.center,
+                        child: Image.asset(
+                          ForestStatus.getImageUrl(
+                            status: ForestStatus.getStatus(
+                              percentage: forest!.percentage,
+                            ),
                           ),
+                          width: 100.0,
                         ),
                       ),
-                      const SizedBox(width: 8.0),
-                      Expanded(
-                        child: InkWell(
-                          onTap: () async {
-                            if (user.heartQuantity < 1) {
-                              showCustomGeneralDialog(
-                                context: context,
-                                bottomSheetWidget:
-                                    CustomGeneralDialogBottomSheetWidget(
-                                  title: '영양분 갯수가 소진 되었습니다.',
-                                  onPressed: () {
-                                    context.pop();
-                                    context.goNamed(ProductScreen.routeName);
-                                  },
-                                  buttonText: '스토어로 이동',
-                                ),
-                              );
-                              return;
-                            }
-
-                            isHeart = true;
-                            setState(() {});
-                            await Future.delayed(const Duration(seconds: 2));
-                            isHeart = false;
-                            setState(() {});
-
-                            showCustomGeneralDialog(
-                              context: context,
-                              bottomSheetWidget:
-                                  CustomGeneralDialogBottomSheetWidget(
-                                title: '영양분 주기 성공!',
-                                description:
-                                    '하루에 한 번 영양분을 줄 수 있어요. 매일 영양분을 주면 2%씩 성장시킬 수 있어요.',
-                                onPressed: () {
-                                  ref.read(userProvider.notifier).heart();
-                                  context.pop();
-                                },
-                                buttonText: '확인',
-                              ),
-                            );
-                          },
-                          child: _renderItemContainer(
-                            title: '영양분 주기',
-                            quantity: user.heartQuantity,
-                            count: user.heartCount,
+                      if (isWater)
+                        Align(
+                          alignment: Alignment.center,
+                          child: Image.asset(
+                            ImagePath.water,
+                            width: 80.0,
                           ),
                         ),
-                      ),
+                      if (isHeart)
+                        Align(
+                          alignment: Alignment.center,
+                          child: Image.asset(
+                            ImagePath.heart,
+                            width: 80.0,
+                          ),
+                        ),
                     ],
                   ),
+                  const SizedBox(height: 20.0),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: InkWell(
+                      onTap: () {
+                        context.pushNamed(GrowStageScreen.routeName);
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width - 48,
+                        decoration: BoxDecoration(
+                            color: MyColor.white,
+                            borderRadius: BorderRadius.circular(12.0)),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 24.0,
+                            vertical: 8.0,
+                          ),
+                          child: IntrinsicHeight(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      forest.nickname,
+                                      style: MyTextStyle.bodyTitleBold,
+                                    ),
+                                    const SizedBox(height: 4.0),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          forest.title,
+                                          style: MyTextStyle.descriptionRegular,
+                                        ),
+                                        const SizedBox(width: 4.0),
+                                        Text(
+                                          forest.engTitle,
+                                          style: MyTextStyle.minimumRegular
+                                              .copyWith(
+                                            color: MyColor.darkGrey,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                CircularPercentIndicator(
+                                  backgroundColor: MyColor.middleGrey,
+                                  radius: 36.0,
+                                  lineWidth: 5.0,
+                                  percent: (forest.percentage > 99)
+                                      ? 1.0
+                                      : forest.percentage / 100,
+                                  center: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        (forest.percentage > 99)
+                                            ? "100 %"
+                                            : "${forest.percentage} %",
+                                        style: MyTextStyle.descriptionMedium,
+                                      ),
+                                      Text(
+                                        ForestStatus.getStatus(
+                                                percentage: forest.percentage)
+                                            .label
+                                            .split(' ')
+                                            .first,
+                                        style:
+                                            MyTextStyle.minimumRegular.copyWith(
+                                          color: MyColor.darkGrey,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  progressColor: Colors.green,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20.0),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+          const SizedBox(height: 20.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Text(
+                  '쑥쑥 성장시키기',
+                  style: MyTextStyle.bodyTitleMedium,
+                ),
+                const SizedBox(height: 4.0),
+                Text(
+                  '나만의 반려 식물을 쑥쑥 성장 시켜 보세요!',
+                  style: MyTextStyle.descriptionRegular
+                      .copyWith(color: MyColor.darkGrey),
+                ),
+                const SizedBox(height: 12.0),
+                Row(
+                  children: [
+                    Expanded(
+                      child: InkWell(
+                        onTap: () async {
+                          if (user.waterQuantity < 1) {
+                            showCustomGeneralDialog(
+                              context: context,
+                              bottomSheetWidget:
+                                  CustomGeneralDialogBottomSheetWidget(
+                                title: '물방울 갯수가 소진 되었습니다.',
+                                onPressed: () {
+                                  context.pop();
+                                  context.goNamed(ProductScreen.routeName);
+                                },
+                                buttonText: '스토어로 이동',
+                              ),
+                            );
+                            return;
+                          }
+
+                          isWater = true;
+                          setState(() {});
+                          await Future.delayed(const Duration(seconds: 2));
+                          isWater = false;
+                          setState(() {});
+
+                          showCustomGeneralDialog(
+                            context: context,
+                            bottomSheetWidget:
+                                CustomGeneralDialogBottomSheetWidget(
+                              title: '물 주기 성공!',
+                              description:
+                                  '하루에 한 번 물을 줄 수 있어요. 매일 물을 주면 1%씩 성장시킬 수 있어요.',
+                              onPressed: () {
+                                ref.read(userProvider.notifier).water();
+                                context.pop();
+                              },
+                              buttonText: '확인',
+                            ),
+                          );
+                        },
+                        child: _renderItemContainer(
+                          title: "물 주기",
+                          quantity: user.waterQuantity,
+                          count: user.waterCount,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 8.0),
+                    Expanded(
+                      child: InkWell(
+                        onTap: () async {
+                          if (user.heartQuantity < 1) {
+                            showCustomGeneralDialog(
+                              context: context,
+                              bottomSheetWidget:
+                                  CustomGeneralDialogBottomSheetWidget(
+                                title: '영양분 갯수가 소진 되었습니다.',
+                                onPressed: () {
+                                  context.pop();
+                                  context.goNamed(ProductScreen.routeName);
+                                },
+                                buttonText: '스토어로 이동',
+                              ),
+                            );
+                            return;
+                          }
+
+                          isHeart = true;
+                          setState(() {});
+                          await Future.delayed(const Duration(seconds: 2));
+                          isHeart = false;
+                          setState(() {});
+
+                          showCustomGeneralDialog(
+                            context: context,
+                            bottomSheetWidget:
+                                CustomGeneralDialogBottomSheetWidget(
+                              title: '영양분 주기 성공!',
+                              description:
+                                  '하루에 한 번 영양분을 줄 수 있어요. 매일 영양분을 주면 2%씩 성장시킬 수 있어요.',
+                              onPressed: () {
+                                ref.read(userProvider.notifier).heart();
+                                context.pop();
+                              },
+                              buttonText: '확인',
+                            ),
+                          );
+                        },
+                        child: _renderItemContainer(
+                          title: '영양분 주기',
+                          quantity: user.heartQuantity,
+                          count: user.heartCount,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 40.0),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

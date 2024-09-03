@@ -55,35 +55,49 @@ class GrowStageScreen extends ConsumerWidget {
     final imageUrl = ForestStatus.getImageUrl(status: status);
     final stageInfo = ForestStatus.getStageInfo(status: status);
 
-    return Row(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: MyColor.third,
-            borderRadius: BorderRadius.circular(12.0),
-          ),
-          width: 80.0,
-          child: Padding(
+    return Container(
+      decoration: BoxDecoration(
+        color: MyColor.fourth,
+        borderRadius: BorderRadius.circular(12.0),
+        border: Border.all(
+          width: 1.0,
+          color: MyColor.middleGrey,
+        )
+      ),
+      child: Row(
+        children: [
+          Padding(
             padding: const EdgeInsets.all(4.0),
-            child: Image.asset(
-              imageUrl,
-              width: 60.0,
+            child: Container(
+              decoration: BoxDecoration(
+                color: MyColor.third,
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              width: 80.0,
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Image.asset(
+                  imageUrl,
+                  width: 60.0,
+                ),
+              ),
             ),
           ),
-        ),
-        const SizedBox(width: 20.0),
-        Text(
-          status.label,
-          style: MyTextStyle.bodyMedium,
-        ),
-        const Expanded(child: SizedBox(width: 1.0)),
-        Text(
-          stageInfo,
-          style: MyTextStyle.bodyRegular.copyWith(
-            color: MyColor.darkGrey,
+          const SizedBox(width: 20.0),
+          Text(
+            status.label,
+            style: MyTextStyle.bodyMedium,
           ),
-        ),
-      ],
+          const Expanded(child: SizedBox(width: 1.0)),
+          Text(
+            stageInfo,
+            style: MyTextStyle.bodyRegular.copyWith(
+              color: MyColor.darkGrey,
+            ),
+          ),
+          const SizedBox(width: 20.0),
+        ],
+      ),
     );
   }
 }
