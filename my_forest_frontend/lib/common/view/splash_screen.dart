@@ -31,18 +31,11 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: Image.asset(
-                ImagePath.appIcon,
-                width: MediaQuery.of(context).size.width * 3 / 7,
-              ),
-            ),
-            const SizedBox(height: 20.0),
             Image.asset(
               ImagePath.logo,
               width: MediaQuery.of(context).size.width * 5 / 7,
             ),
+            const SizedBox(height: 20.0),
           ],
         ),
       ),
