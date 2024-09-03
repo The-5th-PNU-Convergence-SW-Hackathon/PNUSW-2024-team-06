@@ -40,7 +40,7 @@ class _ForestVerticalItemGridState
 
     return GridView.builder(
       padding: const EdgeInsets.symmetric(horizontal: horizontalPadding),
-      physics: const NeverScrollableScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
