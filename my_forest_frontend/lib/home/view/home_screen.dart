@@ -75,7 +75,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               children: [
                 _renderBackgroundContainer(),
                 Positioned(
-                  right: 16.0,
+                  // right: 16.0,
                   top: 16.0,
                   child: GestureDetector(
                     onLongPress: () {
@@ -108,7 +108,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     child: Align(
                       alignment: Alignment.center,
                       child: Image.asset(
-                        ImagePath.animationWater,
+                        ImagePath.water,
                         width: 80.0,
                       ),
                     ),
@@ -119,7 +119,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     child: Align(
                       alignment: Alignment.center,
                       child: Image.asset(
-                        ImagePath.animationHeart,
+                        ImagePath.heart,
                         width: 80.0,
                       ),
                     ),
@@ -444,8 +444,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             const SizedBox(height: 8.0),
             Image.asset(
               title == "물 주기"
-                  ? ImagePath.animationWater
-                  : ImagePath.animationHeart,
+                  ? ImagePath.water
+                  : ImagePath.heart,
               height: 50.0,
             ),
             const SizedBox(height: 8.0),

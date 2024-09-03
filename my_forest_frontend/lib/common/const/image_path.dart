@@ -20,12 +20,9 @@ class ImagePath {
   static const user = "asset/img/user/user.png";
 
   // home
-  static const homeBackground = "asset/img/home/background.png";
   static const sun = "asset/img/home/sun.png";
   static const water = "asset/img/home/water.png";
   static const heart = "asset/img/home/heart.png";
-  static const animationHeart = "asset/img/home/animation_heart.png";
-  static const animationWater = "asset/img/home/animation_water.png";
 
   // forest
   static const forestStageDirectory = "asset/img/forest/stage/";
