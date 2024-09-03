@@ -5,7 +5,7 @@ class MyColor {
   static const primary = Color(0xFF32B25D);
   static const secondary = Color(0xFF86DF9D);
   static const third = Color(0xFFCBF9CC);
-  static const fourth = Color(0xFFDEF7FF);
+  static const fourth = Color(0xFFF1F9EE);
 
   // Text Color
   static const text = Color(0xFF1C1C1E);

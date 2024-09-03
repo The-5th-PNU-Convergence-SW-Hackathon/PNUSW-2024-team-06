@@ -67,14 +67,28 @@ class _DailyWritingScreenState extends ConsumerState<DailyWritingScreen> {
                     flex: 3,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: MyColor.third,
+                        color: MyColor.fourth,
+                        border: Border.all(
+                          width: 1.0,
+                          color: MyColor.primary,
+                        ),
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
-                        child: Text(
-                          daily.question,
-                          style: MyTextStyle.bodyMedium,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Text(
+                              "Q ${int.parse(widget.id) + 1}",
+                              style: MyTextStyle.descriptionRegular,
+                            ),
+                            const SizedBox(height: 8.0),
+                            Text(
+                              daily.question,
+                              style: MyTextStyle.descriptionBold,
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -146,34 +160,39 @@ class _DailyWritingScreenState extends ConsumerState<DailyWritingScreen> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: MyColor.third,
+                          color: MyColor.fourth,
                           borderRadius: BorderRadius.circular(12.0),
+                          border: Border.all(
+                            width: 1.0,
+                            color: MyColor.primary,
+                          ),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               const Text(
                                 "오늘의 감정",
-                                style: MyTextStyle.bodyMedium,
+                                style: MyTextStyle.descriptionRegular,
                               ),
                               const SizedBox(height: 8.0),
                               daily.emotionImageUrl.isNotEmpty
                                   ? Image.asset(
                                       daily.emotionImageUrl,
-                                      width: 40,
-                                      height: 40,
+                                      width: 48,
+                                      height: 48,
                                       fit: BoxFit.cover,
                                     )
                                   : emotionIndex == -1
                                       ? PhosphorIcon(
-                                          PhosphorIcons.plusCircle(),
-                                          size: 32.0,
+                                          PhosphorIcons.plusCircle(PhosphorIconsStyle.thin),
+                                          size: 48.0,
                                         )
                                       : Image.asset(
                                           "${ImagePath.emotionDirectory}$emotionIndex.png",
-                                          width: 40,
-                                          height: 40,
+                                          width: 48,
+                                          height: 48,
                                           fit: BoxFit.cover,
                                         )
                             ],

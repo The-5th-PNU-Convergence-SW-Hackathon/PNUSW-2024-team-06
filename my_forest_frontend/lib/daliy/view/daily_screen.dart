@@ -36,19 +36,18 @@ class DailyScreen extends ConsumerWidget {
             },
             child: Container(
               decoration: BoxDecoration(
+                color: MyColor.fourth,
                 border: Border.all(
                   width: 2.0,
-                  color: daily.answer.isEmpty
-                      ? MyColor.middleGrey
-                      : MyColor.primary,
+                  color: daily.answer.isEmpty ? MyColor.empty : MyColor.primary,
                 ),
-                borderRadius: BorderRadius.circular(12.0),
+                borderRadius: BorderRadius.circular(16.0),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
                   "${index + 1}. ${daily.question}",
-                  style: MyTextStyle.bodyMedium,
+                  style: MyTextStyle.descriptionRegular,
                 ),
               ),
             ),
