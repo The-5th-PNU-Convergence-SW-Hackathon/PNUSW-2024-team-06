@@ -2,6 +2,7 @@ class ImagePath {
   // logo, icon
   static const appIcon = "asset/img/logo/app_icon.png";
   static const logo = "asset/img/logo/logo.png";
+  static const logoBlack = "asset/img/logo/logo_black.png";
 
   // social_login button
   static const appleIcon = "asset/img/social_login/button/apple.png";
@@ -38,5 +39,8 @@ class ImagePath {
 
   // product
   static const productDirectory = "asset/img/product/";
+
+  // background
+  static const defaultBackground = "asset/img/background/0.png";
 
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../common/const/image_path.dart';
-import '../../home/view/home_screen.dart';
+import '../../onboarding/view/start_screen.dart';
 
 class CustomSnsScreen extends StatefulWidget {
   static String get routeName => 'sns';
@@ -44,7 +44,7 @@ class _CustomSnsScreenState extends State<CustomSnsScreen> {
   void delay() async {
     await Future.delayed(const Duration(seconds: 1));
 
-    context.goNamed(HomeScreen.routeName);
+    context.goNamed(StartScreen.routeName);
   }
 
   String switchImagePath({required String? kind}) {

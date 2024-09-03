@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_forest_frontend/onboarding/view/start_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../common/component/custom_text_form_field.dart';
@@ -11,7 +12,6 @@ import '../../common/const/text_styles.dart';
 import '../../common/layout/default_app_bar.dart';
 import '../../common/layout/default_layout.dart';
 import '../../common/provider/global_provider.dart';
-import '../../home/view/home_screen.dart';
 import 'find_id_screen.dart';
 import 'find_password_screen.dart';
 import 'term_screen.dart';
@@ -78,7 +78,7 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
                       setState(() {
                         isLoading = false;
                       });
-                      context.goNamed(HomeScreen.routeName);
+                      context.goNamed(StartScreen.routeName);
                     },
                     child: const Text('로그인'),
                   ),
