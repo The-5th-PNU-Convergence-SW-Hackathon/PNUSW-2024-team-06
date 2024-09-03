@@ -118,7 +118,9 @@ class _DailyWritingScreenState extends ConsumerState<DailyWritingScreen> {
                                         style: MyTextStyle.bodyMedium,
                                       ),
                                       IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          context.pop();
+                                        },
                                         icon: PhosphorIcon(
                                           PhosphorIcons.x(),
                                           size: 28.0,
@@ -209,7 +211,9 @@ class _DailyWritingScreenState extends ConsumerState<DailyWritingScreen> {
               child: CustomTextFormField(
                 controller: controller,
                 onChanged: (String value) {
-                  text = value;
+                  setState(() {
+                    text = value;
+                  });
                 },
                 onSaved: (String? newValue) {},
                 validator: (String? value) {
