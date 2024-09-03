@@ -23,6 +23,7 @@ class DailyScreen extends ConsumerWidget {
       appbar: const DefaultAppBar(title: '일일문답'),
       child: ListView.separated(
         shrinkWrap: true,
+        reverse: true,
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
         itemBuilder: (BuildContext context, int index) {
           final daily = dailies[index];
@@ -39,7 +40,7 @@ class DailyScreen extends ConsumerWidget {
                 color: MyColor.fourth,
                 border: Border.all(
                   width: 2.0,
-                  color: daily.answer.isEmpty ? MyColor.empty : MyColor.primary,
+                  color: daily.answer.isNotEmpty ? MyColor.empty : MyColor.primary,
                 ),
                 borderRadius: BorderRadius.circular(16.0),
               ),
@@ -48,6 +49,7 @@ class DailyScreen extends ConsumerWidget {
                 child: Text(
                   "${index + 1}. ${daily.question}",
                   style: MyTextStyle.descriptionRegular,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),
