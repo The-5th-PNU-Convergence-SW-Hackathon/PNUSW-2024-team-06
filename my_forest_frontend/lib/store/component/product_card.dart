@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../common/const/colors.dart';
 import '../../common/const/text_styles.dart';
@@ -10,22 +9,22 @@ class ProductCard extends StatelessWidget {
   final String id;
   final String title;
   final int price;
+  final int quantity;
   final String mainImageUrl;
   final DateTime createdAt;
 
   // widget property
   final String? heroKey; // 히어로 위젯 키
-  final double? itemWidth;
 
   const ProductCard({
     super.key,
     required this.id,
     required this.title,
     required this.price,
+    required this.quantity,
     required this.mainImageUrl,
     required this.createdAt,
     this.heroKey,
-    this.itemWidth,
   });
 
   factory ProductCard.fromModel({
@@ -38,24 +37,44 @@ class ProductCard extends StatelessWidget {
       id: model.id,
       title: model.title,
       price: model.price,
+      quantity: model.quantity,
       mainImageUrl: model.mainImageUrl,
       createdAt: model.createdAt,
-      itemWidth: itemWidth,
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: itemWidth ?? 156.0,
+      width: 100.0,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Image.asset(
-            mainImageUrl,
-            fit: BoxFit.cover,
-            width: 100.0,
-            height: itemWidth ?? 156.0,
+          Container(
+            decoration: BoxDecoration(
+              color: MyColor.lightGrey,
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  const SizedBox(height: 8.0),
+                  Image.asset(
+                    mainImageUrl,
+                    fit: BoxFit.fill,
+                    width: 40.0,
+                    height: 40.0,
+                  ),
+                  const SizedBox(height: 2.0),
+                  Text(
+                    "x  ${quantity.toString()}",
+                    style: MyTextStyle.bodyRegular,
+                  ),
+                  const SizedBox(height: 6.0),
+                ],
+              ),
+            ),
           ),
           const SizedBox(height: 6.0),
           Text(

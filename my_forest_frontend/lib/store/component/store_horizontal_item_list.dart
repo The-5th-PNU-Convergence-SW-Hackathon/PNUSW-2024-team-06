@@ -57,14 +57,11 @@ class StoreHorizontalItemList extends ConsumerWidget {
                     );
               }
             },
-            child: ProductCard.fromModel(
-              model: product,
-              itemWidth: 120.0,
-            ),
+            child: ProductCard.fromModel(model: product),
           );
         },
         separatorBuilder: (context, index) {
-          return const SizedBox(width: 16.0);
+          return const SizedBox(width: 8.0);
         },
       ),
     );
