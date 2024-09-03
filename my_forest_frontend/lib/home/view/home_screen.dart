@@ -13,13 +13,11 @@ import 'package:my_forest_frontend/store/view/product_screen.dart';
 import 'package:my_forest_frontend/user/model/user_model.dart';
 import 'package:my_forest_frontend/user/provider/user_provider.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../common/const/image_path.dart';
 import '../../common/layout/default_app_bar.dart';
 import '../../common/layout/default_layout.dart';
 import '../../forest/model/forest_model.dart';
-import '../../notification/view/notification_screen.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   static String get routeName => "home";
@@ -41,27 +39,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
     return DefaultLayout(
       appbar: DefaultAppBar(
+        backgroundColor: const Color(0xFFC4F1FF),
         title: '',
         centerTitle: true,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16.0),
-          child: Image.asset(ImagePath.logo),
+        titleWidget: Image.asset(
+          ImagePath.logoBlack,
+          width: 140.0,
         ),
         leadingWidth: 160,
-        action: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: IconButton(
-              onPressed: () {
-                context.pushNamed(NotificationScreen.routeName);
-              },
-              icon: PhosphorIcon(
-                PhosphorIcons.bell(),
-                size: 28.0,
-              ),
-            ),
-          ),
-        ],
       ),
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -236,7 +221,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                             isWater = true;
                             setState(() {});
-                            await Future.delayed(const Duration(seconds: 3));
+                            await Future.delayed(const Duration(seconds: 2));
                             isWater = false;
                             setState(() {});
 
@@ -284,7 +269,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                             isHeart = true;
                             setState(() {});
-                            await Future.delayed(const Duration(seconds: 3));
+                            await Future.delayed(const Duration(seconds: 2));
                             isHeart = false;
                             setState(() {});
 
