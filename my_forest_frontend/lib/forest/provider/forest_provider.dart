@@ -30,6 +30,7 @@ class ForestStateNotifier extends StateNotifier<List<ForestModel>> {
         imageUrl: "${ImagePath.forestDirectory}$index.png",
         nickname: '',
         title: forests.elementAt(index),
+        engTitle: guideEngTitle[index],
         description: forestData[forests.elementAt(index)]![0],
         effect: forestData[forests.elementAt(index)]![1],
         percentage: 0,

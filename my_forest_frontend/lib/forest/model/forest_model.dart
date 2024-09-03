@@ -15,6 +15,7 @@ class ForestModel extends ForestModelBase {
   final String imageUrl;
   final String nickname;
   final String title;
+  final String engTitle;
   final String description;
   final String effect;
   final int percentage;
@@ -24,6 +25,7 @@ class ForestModel extends ForestModelBase {
     required this.imageUrl,
     required this.nickname,
     required this.title,
+    required this.engTitle,
     required this.description,
     required this.effect,
     required this.percentage,
@@ -34,6 +36,7 @@ class ForestModel extends ForestModelBase {
     String? imageUrl,
     String? nickname,
     String? title,
+    String? engTitle,
     String? description,
     String? effect,
     int? percentage,
@@ -43,6 +46,7 @@ class ForestModel extends ForestModelBase {
       imageUrl: imageUrl ?? this.imageUrl,
       nickname: nickname ?? this.nickname,
       title: title ?? this.title,
+      engTitle: engTitle ?? this.engTitle,
       description: description ?? this.description,
       effect: effect ?? this.effect,
       percentage: percentage ?? this.percentage,

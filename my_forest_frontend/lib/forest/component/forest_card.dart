@@ -10,6 +10,7 @@ class ForestCard extends StatelessWidget {
   final String imageUrl;
   final String nickname;
   final String title;
+  final String engTitle;
   final String description;
 
   const ForestCard({
@@ -18,6 +19,7 @@ class ForestCard extends StatelessWidget {
     required this.imageUrl,
     required this.nickname,
     required this.title,
+    required this.engTitle,
     required this.description,
   });
 
@@ -29,6 +31,7 @@ class ForestCard extends StatelessWidget {
       imageUrl: model.imageUrl,
       nickname: model.nickname,
       title: model.title,
+      engTitle: model.engTitle,
       description: model.description,
     );
   }
@@ -39,10 +42,13 @@ class ForestCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: Image.asset(
-            imageUrl,
-            fit: BoxFit.fill,
-            width: double.infinity,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12.0),
+            child: Image.asset(
+              imageUrl,
+              fit: BoxFit.fill,
+              width: double.infinity,
+            ),
           ),
         ),
         Padding(
@@ -56,7 +62,7 @@ class ForestCard extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 4.0, bottom: 4.0, right: 4.0),
           child: Text(
-            title,
+            engTitle,
             style: MyTextStyle.descriptionRegular.copyWith(
               color: MyColor.darkGrey,
             ),
