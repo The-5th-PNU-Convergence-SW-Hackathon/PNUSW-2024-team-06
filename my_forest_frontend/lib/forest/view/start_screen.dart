@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:my_forest_frontend/common/component/default_button.dart';
 import 'package:my_forest_frontend/common/const/colors.dart';
 import 'package:my_forest_frontend/common/const/text_styles.dart';
+import 'package:my_forest_frontend/forest/view/select_forest_screen.dart';
 
 import '../../common/const/image_path.dart';
 import '../../common/layout/default_layout.dart';
@@ -64,8 +66,10 @@ class StartScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(24.0),
                   child: PrimaryButton(
-                    onPressed: () {},
-                    child: Text('시작'),
+                    onPressed: () {
+                      context.goNamed(SelectForestScreen.routeName);
+                    },
+                    child: const Text('시작'),
                   ),
                 ),
               ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_forest_frontend/onboarding/view/start_screen.dart';
+import 'package:my_forest_frontend/forest/view/start_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../../common/component/custom_text_form_field.dart';

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_forest_frontend/daliy/view/daily_screen.dart';
 import 'package:my_forest_frontend/daliy/view/daily_writing_screen.dart';
+import 'package:my_forest_frontend/forest/view/start_screen.dart';
 import 'package:my_forest_frontend/guide/view/guide_screen.dart';
-import 'package:my_forest_frontend/onboarding/view/start_screen.dart';
 
 import '../../forest/view/delivery_screen.dart';
 import '../../forest/view/select_forest_screen.dart';
@@ -60,12 +60,6 @@ List<RouteBase> get routes => [
                     path: "grow_stage",
                     name: GrowStageScreen.routeName,
                     builder: (context, state) => GrowStageScreen(),
-                  ),
-                  GoRoute(
-                    parentNavigatorKey: _rootNavigatorKey,
-                    path: "select_forest",
-                    name: SelectForestScreen.routeName,
-                    builder: (context, state) => SelectForestScreen(),
                   ),
                 ],
               ),
@@ -252,15 +246,12 @@ List<RouteBase> get routes => [
         name: StartScreen.routeName,
         builder: (context, state) => StartScreen(),
         routes: [
-          // GoRoute(
-          //   parentNavigatorKey: _rootNavigatorKey,
-          //   path: ':id',
-          //   name: NotificationDetailScreen.routeName,
-          //   builder: (context, state) {
-          //     final id = state.pathParameters['id']!;
-          //     return NotificationDetailScreen(id: id);
-          //   },
-          // ),
+          GoRoute(
+            parentNavigatorKey: _rootNavigatorKey,
+            path: "select_forest",
+            name: SelectForestScreen.routeName,
+            builder: (context, state) => SelectForestScreen(),
+          ),
         ],
       ),
     ];

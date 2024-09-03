@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../common/const/image_path.dart';
-import '../../onboarding/view/start_screen.dart';
+import '../../forest/view/start_screen.dart';
 
 class CustomSnsScreen extends StatefulWidget {
   static String get routeName => 'sns';
