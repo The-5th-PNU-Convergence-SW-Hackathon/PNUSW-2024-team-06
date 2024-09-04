@@ -3,7 +3,7 @@
 - **개발 배경**
 
   ***1. 외부적 배경***
-  ![개발외부적배경](docs/정보구조도.jpeg)
+  ![개발외부적배경](docs/image/dev_background.png)
 
 <br>
 
