@@ -23,7 +23,7 @@ class StoreHorizontalItemList extends ConsumerWidget {
     final user = ref.watch(userProvider) as UserModel;
 
     return SizedBox(
-      height: 200.0,
+      height: 160.0,
       child: ListView.separated(
         physics: const BouncingScrollPhysics(),
         shrinkWrap: true,

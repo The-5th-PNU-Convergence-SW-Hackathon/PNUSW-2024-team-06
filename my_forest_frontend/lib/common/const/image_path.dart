@@ -36,8 +36,9 @@ class ImagePath {
 
   // product
   static const productDirectory = "asset/img/product/";
+  static const potDirectory = "asset/img/pot/";
 
   // background
-  static const defaultBackground = "asset/img/background/0.png";
-
+  static const defaultBackground = "asset/img/background/default.png";
+  static const backgroundDirectory = "asset/img/background/";
 }

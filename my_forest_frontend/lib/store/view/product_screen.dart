@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_forest_frontend/common/const/colors.dart';
+import 'package:my_forest_frontend/store/component/background_wrap.dart';
+import 'package:my_forest_frontend/store/component/pot_horizontal_item_list.dart';
 import 'package:my_forest_frontend/store/component/store_horizontal_item_list.dart';
 
 import '../../common/component/show/custom_general_dialog_bottom_sheet_widget.dart';
@@ -67,7 +69,7 @@ class _ProductScreenState extends ConsumerState<ProductScreen> {
                 );
               },
             ),
-            const SizedBox(height: 40.0),
+            const SizedBox(height: 20.0),
             _renderTitleAndDescription(
               title: '영양분',
               description: '반려식물이 더 빨리 자라도록 많은 영양분을 주세요',
@@ -98,6 +100,19 @@ class _ProductScreenState extends ConsumerState<ProductScreen> {
                 );
               },
             ),
+            const SizedBox(height: 24.0),
+            _renderTitleAndDescription(
+              title: '팟',
+              description: '내 반려식물과 어울리는 팟을 골라보세요.\n배송 시 최종 구매 팟 디자인으로 배송돼요.',
+            ),
+            PotHorizontalItemList(),
+            const SizedBox(height: 40.0),
+            _renderTitleAndDescription(
+              title: '팟',
+              description: '내 반려식물과 어울리는 팟을 골라보세요.\n배송 시 최종 구매 팟 디자인으로 배송돼요.',
+            ),
+            BackgroundWrap(),
+            const SizedBox(height: 40.0),
           ],
         ),
       ),
