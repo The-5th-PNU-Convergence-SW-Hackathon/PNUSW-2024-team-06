@@ -183,6 +183,18 @@
   - 식물이 성장하면, 앱을 통해 실제로 반려 식물을 집으로 배송받는 경험도 확인할 수 있습니다.
   - 이 모든 과정은 사용자에게 정서적 안정감과 책임감을 느끼게 하며, 심리적 안정을 도울 수 있습니다.
 
+
+[![프로젝트 시연 영상](docs/시연영상.mp4)](docs/시연영상.mp4)
+
+
+<video width="600" controls>
+  <source src="docs/시연영상.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+
+
 > 프로젝트에 대한 소개와 시연 영상을 넣으세요.
 > 프로젝트 소개 동영상을 교육원 메일(swedu@pusan.ac.kr)로 제출 이후 센터에서 부여받은 youtube URL주소를 넣으세요.
 
