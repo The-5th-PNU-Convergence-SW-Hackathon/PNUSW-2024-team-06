@@ -11,6 +11,7 @@ import '../../home/view/grow_stage_screen.dart';
 import '../../home/view/home_screen.dart';
 import '../../notification/view/notification_detail_screen.dart';
 import '../../notification/view/notification_screen.dart';
+import '../../store/view/my_item_screen.dart';
 import '../../store/view/product_screen.dart';
 import '../../user/view/certification_screen.dart';
 import '../../user/view/custom_sns_screen.dart';
@@ -122,12 +123,12 @@ List<RouteBase> get routes => [
                     name: DeliveryScreen.routeName,
                     builder: (context, state) => DeliveryScreen(),
                   ),
-                  // GoRoute(
-                  //   parentNavigatorKey: _rootNavigatorKey,
-                  //   path: 'my_product_list',
-                  //   name: MyProductListScreen.routeName,
-                  //   builder: (context, state) => MyProductListScreen(),
-                  // ),
+                  GoRoute(
+                    parentNavigatorKey: _rootNavigatorKey,
+                    path: 'my_item',
+                    name: MyItemScreen.routeName,
+                    builder: (context, state) => MyItemScreen(),
+                  ),
                 ],
               ),
             ],

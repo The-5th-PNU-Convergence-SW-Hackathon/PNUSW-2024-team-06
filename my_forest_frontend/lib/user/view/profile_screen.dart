@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_forest_frontend/store/view/my_item_screen.dart';
 import 'package:my_forest_frontend/user/view/term_detail_screen.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -55,6 +56,12 @@ class ProfileScreen extends ConsumerWidget {
             const DividerContainer(topHeight: 32.0, bottomHeight: 20.0),
             const DeliveryStatusContainer(),
             const SizedBox(height: 20.0),
+            renderIconAndTextButton(
+              title: '나의 아이템',
+              onTap: () {
+                context.pushNamed(MyItemScreen.routeName);
+              },
+            ),
             renderIconAndTextButton(
               title: '이용약관',
               onTap: () {
@@ -126,7 +133,7 @@ class ProfileScreen extends ConsumerWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 24.0,
-          vertical: 16.0,
+          vertical: 12.0,
         ),
         child: IntrinsicHeight(
           child: Row(
@@ -135,11 +142,11 @@ class ProfileScreen extends ConsumerWidget {
             children: [
               Text(
                 title,
-                style: MyTextStyle.bodyTitleMedium,
+                style: MyTextStyle.bodyRegular,
               ),
               PhosphorIcon(
                 PhosphorIcons.caretRight(),
-                size: 28,
+                size: 20,
               ),
             ],
           ),
