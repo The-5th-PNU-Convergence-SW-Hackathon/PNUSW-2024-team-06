@@ -3,7 +3,7 @@
 - **개발 배경**
 
   ***1. 외부적 배경***
-  ![개발배경그래프](https://github.com/The-5th-PNU-Convergence-SW-Hackathon/PNUSW-2024-team-06/blob/main/docs/개발외부적배경.png)
+  ![개발외부적배경](docs/개발외부적배경.png)
 
 <br>
 
