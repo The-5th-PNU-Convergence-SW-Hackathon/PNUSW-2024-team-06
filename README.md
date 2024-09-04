@@ -88,6 +88,35 @@
 
 <br>
 
+#### 3.3. 기능명세서
+<p align="center">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-01.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-02.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-03.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-04.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-05.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-06.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-07.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-08.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-09.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-10.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-11.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-12.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-13.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-14.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-15.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-16.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-17.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-18.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-19.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-20.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-21.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-22.png" alt="이미지1 설명" width="150">
+  <img src="docs/image/requirement/기능명세서&와이어프레임-23.png" alt="이미지1 설명" width="150">
+</p>
+<br>
+
+
 #### 3.4. 디렉토리 구조
 **도메인 단위로 폴더를 구분.**
 ```
